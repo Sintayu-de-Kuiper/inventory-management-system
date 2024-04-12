@@ -7,3 +7,11 @@ Offline-capable Inventory Management System (IMS) for ROC-Nijmegen, featuring RF
 - [Software Requirements Specification](docs/SRS.md)
 - [Software Design Document](docs/SDD.md)
 - [Trello Scrum Board](https://trello.com/b/nBocIY3L/inventory-management-system)
+
+## Installation
+
+1. Clone the repository
+2. Install dependencies with
+    - `npm install`
+3. Run the development server
+    - `npm run dev`
