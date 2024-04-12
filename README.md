@@ -12,6 +12,18 @@ Offline-capable Inventory Management System (IMS) for ROC-Nijmegen, featuring RF
 
 1. Clone the repository
 2. Install dependencies with
-    - `npm install`
+   - `npm install`
 3. Run the development server
-    - `npm run dev`
+   - `npm run dev`
+
+## Contributing
+
+Use the prettier formatter.
+Using VSCode: [https://www.digitalocean.com/community/tutorials/how-to-format-code-with-prettier-in-visual-studio-code](https://www.digitalocean.com/community/tutorials/how-to-format-code-with-prettier-in-visual-studio-code)
+Using WebStorm/PhpStorm:
+
+1. Go to `Tools` -> `Actions On Save`
+2. Enable `Run Prettier`
+3. Click `configure`
+   - Select `Automatic Prettier configuration`
+   - In `Run for files` enter `**/*`
