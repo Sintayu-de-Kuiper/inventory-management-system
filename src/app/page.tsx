@@ -1,31 +1,20 @@
 "use client";
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import axios, { AxiosError } from 'axios';
+import { PrismaClient } from '@prisma/client';
+import {login} from './login';
+
+const prisma = new PrismaClient();
 
 export default function Home() {
-  const [id, setId] = useState('');
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-    try {
-      const response = await axios.post('/api/login', {
-        id: parseInt(id),
-      });
+    // get and log the id
+  }
 
-      if (response.status === 200) {
-        console.log('User logged in:', response.data);
-      } else {
-        console.log('Error:', response.data.message);
-      }
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        console.log('Error:', error.message);
-      } else {
-        console.log('Unexpected error:', error);
-      }
-    }
-  };
+  
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-gray-200 to-gray-100">
@@ -40,8 +29,6 @@ export default function Home() {
             placeholder="ID"
             required
             id="id"
-            value={id}
-            onChange={(event) => setId(event.target.value)}
           />
         </div>
         <button type="submit">Log in</button>
