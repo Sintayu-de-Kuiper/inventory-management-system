@@ -4,6 +4,8 @@ import { PrismaClient } from "@prisma/client";
 import { main } from "./main";
 import { login } from "./login";
 import { useRouter } from "next/navigation";
+import axios from 'axios';
+
 const prisma = new PrismaClient();
 
 export default function Home() {
