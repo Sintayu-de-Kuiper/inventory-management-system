@@ -1,49 +1,47 @@
 "use client";
-import { FormEvent, useState } from 'react';
-import axios, { AxiosError } from 'axios';
-import { PrismaClient } from '@prisma/client';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { FormEvent, useState } from "react";
+import { PrismaClient } from "@prisma/client";
 import { main } from "./main";
-import { login } from './login'
-import { useRouter } from 'next/navigation'
+import { login } from "./api/login";
+import { useRouter } from "next/navigation";
 const prisma = new PrismaClient();
 
 export default function Home() {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // get the id from the input field
-    const id = (e.target as any).elements.id.value
+    const id = (e.target as any).elements.id.value;
 
     // log the id
-    console.log(id)
+    console.log(id);
 
     // use the login function
     try {
-      const res = await fetch('/login', {
-        method: 'POST',
+      const res = await fetch("/api/login", {
+        method: "POST",
         body: JSON.stringify({ id }),
         headers: {
-          'Content-Type': 'application/json',
-        }
-      })
+          "Content-Type": "application/json",
+        },
+      });
 
       if (res.ok) {
-        const user = await res.json()
-        console.log(user)
-        router.push(`/main`)
+        const user = await res.json();
+        console.log(user);
+        router.push(`/main`);
       } else {
-        const error = await res.json()
-        console.error(error.message)
+        const error = await res.json();
+        console.error(error.message);
       }
     } catch (error) {
       if (error instanceof Error) {
-        console.error(error.message)
+        console.error(error.message);
       }
     }
-  }
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-gray-200 to-gray-100">
@@ -63,5 +61,5 @@ export default function Home() {
         <button type="submit">Log in</button>
       </form>
     </main>
-  )
+  );
 }
