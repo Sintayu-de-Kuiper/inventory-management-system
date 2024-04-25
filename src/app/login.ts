@@ -10,7 +10,7 @@ export async function login(req: NextApiRequest, res: NextApiResponse, id:any) {
     const user = await prisma.user.findUnique({
       where: {
         id: parseInt(id),
-      },
+      }
     })
 
     if (user) {

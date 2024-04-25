@@ -2,7 +2,7 @@
 import { FormEvent, useState } from "react";
 import { PrismaClient } from "@prisma/client";
 import { main } from "./main";
-import { login } from "./api/login";
+import { login } from "./login";
 import { useRouter } from "next/navigation";
 const prisma = new PrismaClient();
 
@@ -20,7 +20,7 @@ export default function Home() {
 
     // use the login function
     try {
-      const res = await fetch("/api/login", {
+      const res = await fetch("/login", {
         method: "POST",
         body: JSON.stringify({ id }),
         headers: {
