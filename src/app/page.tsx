@@ -33,7 +33,6 @@ export default function Home() {
       if (res.ok) {
         const user = await res.json()
         console.log(user)
-        // redirect to the user page
         router.push(`/main`)
       } else {
         const error = await res.json()
