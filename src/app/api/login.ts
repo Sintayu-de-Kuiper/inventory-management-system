@@ -1,8 +1,8 @@
-'use server';
 import { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
+'use server';
 
 export async function login(req: NextApiRequest, res: NextApiResponse, id:any) {
   if (req.method == 'POST') {
