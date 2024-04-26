@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 
 export default function Home() {
   const router = useRouter();
-  const [id, setId] = useState<string>("");
+  const [id, setId] = useState("");
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
