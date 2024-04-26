@@ -1,23 +1,15 @@
 "use client";
-import { FormEvent, useState } from "react";
-import { PrismaClient } from "@prisma/client";
 import { useRouter } from "next/navigation";
-const prisma = new PrismaClient();
+import { FormEvent, useState } from "react";
 
 export default function Home() {
   const router = useRouter();
-
+  const [id, setId] = useState<string>("");
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // get the id from the input field
-    const id = (e.target as any).elements.id.value;
-
-    // log the id
-    console.log(id);
-
-    // use the login function
     try {
+      console.log(id);
       const res = await fetch("/api/login", {
         method: "POST",
         body: JSON.stringify({ id }),
@@ -30,12 +22,16 @@ export default function Home() {
         const user = await res.json();
         console.log(user);
         router.push(`/main`);
+      } else {
+        console.error("Login failed");
       }
     } catch (error) {
-      if (error instanceof Error) {
-        console.error(error.message);
-      }
+      console.error("Error during login:", error);
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setId(e.target.value);
   };
 
   return (
@@ -51,6 +47,8 @@ export default function Home() {
             placeholder="ID"
             required
             id="id"
+            value={id}
+            onChange={handleChange} // Added onChange handler
           />
         </div>
         <button type="submit">Log in</button>
