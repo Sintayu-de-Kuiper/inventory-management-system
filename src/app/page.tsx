@@ -1,11 +1,8 @@
 "use client";
 import { FormEvent, useState } from "react";
 import { PrismaClient } from "@prisma/client";
-import { main } from "./main";
-import { login } from "./login";
 import { useRouter } from "next/navigation";
 import axios from 'axios';
-
 const prisma = new PrismaClient();
 
 export default function Home() {
@@ -13,35 +10,26 @@ export default function Home() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+  
     // get the id from the input field
     const id = (e.target as any).elements.id.value;
-
+  
     // log the id
     console.log(id);
-
+  
     // use the login function
     try {
-      const res = await fetch("/login", {
-        method: "POST",
-        body: JSON.stringify({ id }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (res.ok) {
-        const user = await res.json();
+      const res = await axios.post('/api/login', { id });
+  
+      if (res.status === 200) {
+        const user = res.data;
         console.log(user);
         router.push(`/main`);
       } else {
-        const error = await res.json();
-        console.error(error.message);
+        console.error('Login failed');
       }
     } catch (error) {
-      if (error instanceof Error) {
-        console.error(error.message);
-      }
+      console.error('Login failed:', error);
     }
   };
 
