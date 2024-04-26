@@ -1,7 +1,6 @@
 import Head from "next/head";
 
-export function main() {
-  const Home = () => {
+export default function main() {  
     return (
       <div>
         <Head>
@@ -13,5 +12,4 @@ export function main() {
         </main>
       </div>
     );
-  };
-}
+  }
