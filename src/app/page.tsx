@@ -24,7 +24,7 @@ export default function Home() {
         router.push(`/main`);
       } else {
         console.error("Login failed");
-        router.push(`/register`);
+        // router.push(`/register`);
       }
     } catch (error) {
       console.error("Error during login:", error);
