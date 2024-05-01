@@ -1,5 +1,4 @@
 'use server';
-// app/api/login.ts
 import { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
 
@@ -29,7 +28,3 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
     res.status(405).json({ message: 'Method not allowed' });
   }
 }
-
-
-
-  

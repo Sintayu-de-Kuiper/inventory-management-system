@@ -1,15 +1,16 @@
+// page.tsx
 "use client";
-import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function Home() {
+export default function LoginPage() {
   const router = useRouter();
   const [id, setId] = useState("");
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      console.log(id);
       const res = await fetch("/api/login", {
         method: "POST",
         body: JSON.stringify({ id }),
@@ -23,8 +24,8 @@ export default function Home() {
         console.log(user);
         router.push(`/main`);
       } else {
-        console.error("Login failed");
-        // router.push(`/register`);
+        console.error("User not found. Redirecting to registration page.");
+        router.push(`/register`);
       }
     } catch (error) {
       console.error("Error during login:", error);
@@ -49,7 +50,7 @@ export default function Home() {
             required
             id="id"
             value={id}
-            onChange={handleChange} // Added onChange handler
+            onChange={handleChange}
           />
         </div>
         <button type="submit">Log in</button>
