@@ -19,3 +19,8 @@ model User {
   pass_id Int
 }
 
+model inventory {
+  id    Int    @id
+  name String
+  description String
+}
