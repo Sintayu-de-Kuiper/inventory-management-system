@@ -17,6 +17,7 @@ model User {
   student_number Int
   class_name String
   pass_id Int
+  admin String @default("false")
 }
 
 model inventory {
@@ -24,3 +25,5 @@ model inventory {
   name String
   description String
 }
+
+
