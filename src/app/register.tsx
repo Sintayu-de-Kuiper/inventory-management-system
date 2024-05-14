@@ -1,7 +1,34 @@
-"use client"
-import { useState } from "react";
+import React, { useState } from "react";
 import Head from "next/head";
-import { createUser } from "./api/create";
+import { useRouter } from "next/navigation";
+
+async function createUser(formData: {
+  firstName: string;
+  lastName: string;
+  studentNumber: string;
+  className: string;
+  passId: string;
+}) {
+  try {
+    const router = useRouter();
+    const res = await fetch("/api/register", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (res.ok) {
+      router.push(`/page`);
+    } else {
+      throw new Error("Failed to register user");
+    }
+  } catch (error) {
+    console.error("Error during registration:", error);
+    throw error;
+  }
+}
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -14,8 +41,8 @@ export default function Register() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+      ...formData, // Copy the existing state
+      [e.target.name]: e.target.value, // Update the specific field
     });
   };
 
@@ -25,7 +52,7 @@ export default function Register() {
       await createUser(formData);
       alert("User registered successfully!");
     } catch (error) {
-      alert(error);
+      alert("Error during registration: " + error);
     }
   };
 
@@ -77,7 +104,10 @@ export default function Register() {
             onChange={handleChange}
             required
           />
-          <button type="submit" className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">
+          <button
+            type="submit"
+            className="mt-4 rounded bg-blue-500 px-4 py-2 text-white"
+          >
             Register
           </button>
         </form>
