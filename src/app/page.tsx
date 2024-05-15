@@ -1,26 +1,24 @@
-// page.tsx
 "use client";
-import { ChangeEvent, FormEvent, useState } from "react";
+
+import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { login } from "./login";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [passId, setPassId] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const user = await login(passId);
+
+    const formData = new FormData(e.currentTarget);
+
+    const user = await login(formData.get("pass_id") as string);
     console.log(user);
     if (user == null) {
       router.push("/register");
     } else {
       router.push("/home");
     }
-  };
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setPassId(e.target.value);
   };
 
   return (
@@ -36,8 +34,6 @@ export default function LoginPage() {
             placeholder="ID"
             required
             id="pass_id"
-            value={passId}
-            onChange={handleChange}
           />
         </div>
         <button type="submit">Log in</button>
