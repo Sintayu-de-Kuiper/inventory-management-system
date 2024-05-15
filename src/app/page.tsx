@@ -6,7 +6,7 @@ import { login } from "./login";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [pass_id, setId] = useState("");
+  const [pass_id, setPass_id] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ export default function LoginPage() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setId(e.target.value);
+    setPass_id(e.target.value);
   };
 
   return (
