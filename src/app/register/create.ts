@@ -1,6 +1,5 @@
-"use server"
+"use server";
 import { PrismaClient } from "@prisma/client";
-import { type Prisma } from '@prisma/client'
 
 const prisma = new PrismaClient();
 
@@ -12,19 +11,15 @@ interface RegisterData {
   passId: string;
 }
 
-export async function createUser(formData: RegisterData) {
-  "use server"
-  try {
-    return await prisma.user.create({
-      data: {
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        student_number: formData.studentNumber,
-        class_name: formData.className,
-        pass_id: formData.passId,
-      },
-    });
-  } catch (error) {
-    throw error;
-  }
+export async function createUser(registerData: RegisterData) {
+  "use server";
+  return prisma.user.create({
+    data: {
+      first_name: registerData.firstName,
+      last_name: registerData.lastName,
+      student_number: registerData.studentNumber,
+      class_name: registerData.className,
+      pass_id: registerData.passId,
+    },
+  });
 }
