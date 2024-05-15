@@ -5,7 +5,7 @@ CREATE TABLE "User" (
     "last_name" TEXT NOT NULL,
     "student_number" INTEGER NOT NULL,
     "class_name" TEXT NOT NULL,
-    "pass_id" INTEGER NOT NULL,
+    "pass_id" TEXT NOT NULL
 );
 
 -- CreateTable
