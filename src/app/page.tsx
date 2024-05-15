@@ -1,16 +1,16 @@
 // page.tsx
 "use client";
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { login } from "./login";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [pass_id, setId] = useState("");
+  const [passId, setPassId] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const user = await login(pass_id);
+    const user = await login(passId);
     console.log(user);
     if (user == null) {
       router.push("/register");
@@ -19,8 +19,8 @@ export default function LoginPage() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setId(e.target.value);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassId(e.target.value);
   };
 
   return (
@@ -36,7 +36,7 @@ export default function LoginPage() {
             placeholder="ID"
             required
             id="pass_id"
-            value={pass_id}
+            value={passId}
             onChange={handleChange}
           />
         </div>
