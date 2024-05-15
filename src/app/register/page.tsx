@@ -1,36 +1,11 @@
-import React, { useState } from "react";
+"use client";
+import React, { ChangeEvent, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
-
-async function createUser(formData: {
-  firstName: string;
-  lastName: string;
-  studentNumber: string;
-  className: string;
-  passId: string;
-}) {
-  try {
-    const router = useRouter();
-    const res = await fetch("/api/register", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (res.ok) {
-      router.push(`/page`);
-    } else {
-      throw new Error("Failed to register user");
-    }
-  } catch (error) {
-    console.error("Error during registration:", error);
-    throw error;
-  }
-}
+import { createUser } from "./create";
 
 export default function Register() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -39,20 +14,30 @@ export default function Register() {
     passId: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
-      ...formData, // Copy the existing state
+      ...formData,
       [e.target.name]: e.target.value, // Update the specific field
+    });
+  };
+
+  const handleNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: parseInt(e.target.value), // Update the specific field
     });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      await createUser(formData);
-      alert("User registered successfully!");
-    } catch (error) {
-      alert("Error during registration: " + error);
+    const user = await createUser({
+      ...formData,
+      studentNumber: parseInt(formData.studentNumber),
+    });
+    console.log(user);
+    alert("User registered successfully!");
+    if (user) {
+      router.push("/home");
     }
   };
 
@@ -85,7 +70,7 @@ export default function Register() {
             name="studentNumber"
             placeholder="Student Number"
             value={formData.studentNumber}
-            onChange={handleChange}
+            onChange={handleNumberChange}
             required
           />
           <input
@@ -97,7 +82,7 @@ export default function Register() {
             required
           />
           <input
-            type="number"
+            type="text"
             name="passId"
             placeholder="Pass ID"
             value={formData.passId}

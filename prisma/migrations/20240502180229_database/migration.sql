@@ -6,7 +6,6 @@ CREATE TABLE "User" (
     "student_number" INTEGER NOT NULL,
     "class_name" TEXT NOT NULL,
     "pass_id" INTEGER NOT NULL,
-    "admin" TEXT NOT NULL DEFAULT 'false'
 );
 
 -- CreateTable

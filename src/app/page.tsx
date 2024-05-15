@@ -2,33 +2,20 @@
 "use client";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { login } from "./login";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [id, setId] = useState("");
+  const [pass_id, setId] = useState("");
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    try {
-      const res = await fetch("/api/login", {
-        method: "POST",
-        body: JSON.stringify({ id }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (res.ok) {
-        const user = await res.json();
-        console.log(user);
-        router.push(`/main`);
-      } else {
-        console.error("User not found. Redirecting to registration page.");
-        router.push(`/register`);
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
+    const user = await login(pass_id);
+    console.log(user);
+    if (user == null) {
+      router.push("/register");
+    } else {
+      router.push("/home");
     }
   };
 
@@ -48,8 +35,8 @@ export default function LoginPage() {
             className="form__field block w-full border-b-2 border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
             placeholder="ID"
             required
-            id="id"
-            value={id}
+            id="pass_id"
+            value={pass_id}
             onChange={handleChange}
           />
         </div>
