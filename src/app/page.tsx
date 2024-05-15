@@ -8,6 +8,7 @@ export default function LoginPage() {
   const router = useRouter();
   const [pass_id, setPass_id] = useState("");
 
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const user = await login(pass_id);
@@ -21,7 +22,7 @@ export default function LoginPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPass_id(e.target.value);
-  };
+
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-gray-200 to-gray-100">
@@ -44,4 +45,5 @@ export default function LoginPage() {
       </form>
     </main>
   );
+}
 }
