@@ -3,6 +3,9 @@ import React, { FormEvent } from "react";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { createUser } from "./create";
+import { Montserrat } from 'next/font/google'
+
+const montserrat = Montserrat({ subsets: ['latin'] })
 
 export default function Register() {
   const router = useRouter();
@@ -18,6 +21,7 @@ export default function Register() {
       className: formData.get("className") as string,
       passId: crypto.randomUUID(),
     };
+    
 
     const user = await createUser(userData);
     console.log(user);
@@ -36,8 +40,8 @@ export default function Register() {
       <Head>
         <title>Register Page</title>
       </Head>
-      <main className="flex min-h-screen flex-col h-screen items-center justify-center bg-gradient-to-b from-gray-200 to-gray-100">
-      <h2 className="text-l font-bold mb-4 text-purple-700 redial-purple">Register</h2>
+      <main className={`${montserrat.className}  flex min-h-screen flex-col h-screen items-center justify-center bg-gradient-to-b from-gray-200 to-gray-100`}>
+      <h1 className="text-6xl font-bold mb-4 ">Register</h1>
 
       <form onSubmit={handleSubmit} className="w-full max-w-[300px] space-y-4">
         <div className="relative p-4">
@@ -77,7 +81,7 @@ export default function Register() {
         </div>
 
         <div className="relative p-4">
-          <label htmlFor="klasnaam" className="form__label">Klasnaam</label>
+          <label htmlFor="klasnaam" className="form__label">Cohort</label>
           <input
             id="className"
             name="className"
@@ -87,14 +91,14 @@ export default function Register() {
             required
           />
         </div>
-        <div className="flex justify-between items-center mt-4">
-          <div className="p-2 rounded-full bg-red-500 text-white hover:bg-red-600 cursor-pointer annuleer">
-            Annuleer
-          </div>
-          <button type="submit" className="bg-purple-500 hover:bg-purple-700 text-black font-bold py-2 px-4 border border-purple-700 rounded">
+        <button type="submit" className="bg-purple-500 hover:bg-purple-700 text-black font-bold py-2 px-4 border border-purple-700 rounded">
             Register
           </button>
-        </div>
+          <div className="p-2 rounded-full text-grye  cursor-pointer annuleer">
+            Annuleer
+          </div>
+          
+        
       </form>
     </main>
     </div>
