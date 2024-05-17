@@ -11,9 +11,9 @@ export default function LoginPage() {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const passId = formData.get("passId") as string;
+    const studentNumber = parseInt(formData.get("studentNumber") as string);
 
-    const user = await login(passId);
+    const user = await login(studentNumber);
 
     if (!user) {
       router.push("/register");
@@ -31,8 +31,8 @@ export default function LoginPage() {
         <input
           type="number"
           className="form__field mt-4 block w-full border-b-2 border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
-          placeholder="Pas ID"
-          name={"passId"}
+          placeholder="studentNumber"
+          name={"studentNumber"}
           required
         />
         <button>Log in</button>
