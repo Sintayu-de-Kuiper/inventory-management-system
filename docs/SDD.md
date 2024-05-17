@@ -43,5 +43,4 @@ erDiagram
         string date
         string type
     }
-
 ```
