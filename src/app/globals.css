@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .form__group {
   position: relative;
   padding: 20px 0 0;
