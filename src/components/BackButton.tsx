@@ -9,7 +9,7 @@ export default function BackButton({
 }: ButtonProps) {
   return (
     <button
-      className={`text-text-gray absolute bottom-8 left-8 flex w-fit items-center text-xl ${className}`}
+      className={`text-gray-foreground absolute bottom-8 left-8 flex w-fit items-center text-xl ${className}`}
       {...props}
     >
       <svg
