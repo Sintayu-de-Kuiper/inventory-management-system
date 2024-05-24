@@ -34,73 +34,72 @@ export default function Register() {
   };
 
   return (
-    <div className="relative flex flex-col items-center">
+    <main
+      className={
+        "relative flex h-screen min-h-screen flex-col items-center justify-center"
+      }
+    >
       <Head>
-        <title>Register Page</title>
+        <title>Register Page TODO: Fix responsiveness</title>
       </Head>
-      <main
-        className={
-          "flex h-screen min-h-screen flex-col items-center justify-center bg-gradient-to-b"
-        }
-      >
-        <h1 className="mb-12 text-5xl font-bold ">Registratie</h1>
 
-        <form onSubmit={handleSubmit} className="flex w-full flex-col ">
-          <div className="p-4">
-            <label htmlFor="firstName" className="text-gray-foreground text-lg">
-              Voornaam
-            </label>
-            <input
-              id="firstName"
-              name="firstName"
-              className="form__field block h-12 p-2 text-lg outline-none"
-              required
-            />
-          </div>
+      <h1 className="mb-12 text-5xl font-bold ">Registratie</h1>
 
-          <div className="p-4">
-            <label htmlFor="lastName" className="text-gray-foreground text-lg">
-              Achternaam
-            </label>
-            <input
-              id="lastName"
-              name="lastName"
-              className="form__field block h-12 w-full p-2 text-lg outline-none"
-              required
-            />
-          </div>
+      <form onSubmit={handleSubmit} className="flex flex-col">
+        <div className="p-4">
+          <label htmlFor="firstName" className="text-gray-foreground text-lg">
+            Voornaam
+          </label>
+          <input
+            id="firstName"
+            name="firstName"
+            className="form__field block h-12 p-2 text-lg outline-none"
+            required
+          />
+        </div>
 
-          <div className="p-4">
-            <label
-              htmlFor="studentNumber"
-              className="text-gray-foreground text-lg"
-            >
-              Studentnummer
-            </label>
-            <input
-              id="studentNumber"
-              name="studentNumber"
-              className="form__field block h-12 w-full p-2 text-lg outline-none"
-              required
-            />
-          </div>
+        <div className="p-4">
+          <label htmlFor="lastName" className="text-gray-foreground text-lg">
+            Achternaam
+          </label>
+          <input
+            id="lastName"
+            name="lastName"
+            className="form__field block h-12 w-full p-2 text-lg outline-none"
+            required
+          />
+        </div>
 
-          <div className="p-4">
-            <label htmlFor="className" className="text-gray-foreground text-lg">
-              Cohort (2020-2021)
-            </label>
-            <input
-              id="className"
-              name="className"
-              className="form__field block h-12 w-full p-2 text-lg outline-none"
-              required
-            />
-          </div>
+        <div className="p-4">
+          <label
+            htmlFor="studentNumber"
+            className="text-gray-foreground text-lg"
+          >
+            Studentnummer
+          </label>
+          <input
+            id="studentNumber"
+            name="studentNumber"
+            className="form__field block h-12 w-full p-2 text-lg outline-none"
+            required
+          />
+        </div>
 
-          <Button className={"mx-auto mt-20"}>Registeer</Button>
-          <BackButton className="text-text-gray">Annuleer</BackButton>
-        </form>
-      </main>
-    </div>
+        <div className="p-4">
+          <label htmlFor="className" className="text-gray-foreground text-lg">
+            Cohort (2020-2021)
+          </label>
+          <input
+            id="className"
+            name="className"
+            className="form__field block h-12 w-full p-2 text-lg outline-none"
+            required
+          />
+        </div>
+
+        <Button className={"mx-auto mt-20"}>Registeer</Button>
+        <BackButton className="text-text-gray">Annuleer</BackButton>
+      </form>
+    </main>
   );
 }
