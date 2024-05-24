@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { createUser } from "./create";
 import BackButton from "@/components/BackButton";
 import Button from "@/components/Button";
+import Link from "next/link";
 
 export default function Register() {
   const router = useRouter();
@@ -47,7 +48,7 @@ export default function Register() {
 
       <form onSubmit={handleSubmit} className="flex flex-col">
         <div className="p-4">
-          <label htmlFor="firstName" className="text-gray-foreground text-lg">
+          <label htmlFor="firstName" className="text-lg text-gray-foreground">
             Voornaam
           </label>
           <input
@@ -59,7 +60,7 @@ export default function Register() {
         </div>
 
         <div className="p-4">
-          <label htmlFor="lastName" className="text-gray-foreground text-lg">
+          <label htmlFor="lastName" className="text-lg text-gray-foreground">
             Achternaam
           </label>
           <input
@@ -73,7 +74,7 @@ export default function Register() {
         <div className="p-4">
           <label
             htmlFor="studentNumber"
-            className="text-gray-foreground text-lg"
+            className="text-lg text-gray-foreground"
           >
             Studentnummer
           </label>
@@ -86,7 +87,7 @@ export default function Register() {
         </div>
 
         <div className="p-4">
-          <label htmlFor="className" className="text-gray-foreground text-lg">
+          <label htmlFor="className" className="text-lg text-gray-foreground">
             Cohort (2020-2021)
           </label>
           <input
@@ -98,8 +99,10 @@ export default function Register() {
         </div>
 
         <Button className={"mx-auto mt-20"}>Registeer</Button>
-        <BackButton className="text-text-gray">Annuleer</BackButton>
       </form>
+      <BackButton className="text-text-gray">
+        <Link href={"/"}>Annuleer</Link>
+      </BackButton>
     </main>
   );
 }
