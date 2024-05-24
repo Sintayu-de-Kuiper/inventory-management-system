@@ -37,7 +37,7 @@ export default function Register() {
   return (
     <main
       className={
-        "relative flex h-screen min-h-screen flex-col items-center justify-center"
+        "relative flex min-h-screen flex-col items-center justify-center px-8 py-12"
       }
     >
       <Head>
