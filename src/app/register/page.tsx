@@ -81,7 +81,7 @@ export default function Register() {
         </div>
 
         <div className="relative p-4">
-          <label htmlFor="klasnaam" className="form__label">Cohort</label>
+          <label htmlFor="klasnaam" className="form__label">Cohort (2020-2021)</label>
           <input
             id="className"
             name="className"
@@ -91,10 +91,10 @@ export default function Register() {
             required
           />
         </div>
-        <button type="submit" className="bg-purple-500 hover:bg-purple-700 text-black font-bold py-2 px-4 border border-purple-700 rounded">
+        <button type="submit" className="bg hover:bg-purple-700 text-white font-bold py-2 px-4 border hover:border-purple-700 rounded">
             Register
           </button>
-          <div className="p-2 rounded-full text-grye  cursor-pointer annuleer">
+          <div className="text-text-gray ">
             Annuleer
           </div>
           
