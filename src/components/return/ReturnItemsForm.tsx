@@ -1,35 +1,28 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import ItemsTable from "@/components/items/ItemsTable";
 
 export default function ReturnItemsForm() {
+  const items = [
+    {
+      id: "1",
+      name: "Arduino Uno",
+      period: "17/05/2024 - 24/05/2024",
+      note: "Inclusief 10 breadboard kabeltjes",
+      amount: 1,
+    },
+    {
+      id: "2",
+      name: "Arduino Dos",
+      period: "17/05/2024 - 24/05/2024",
+      note: "Inclusief 2 breadboards",
+      amount: 1,
+    },
+  ];
+
   return (
-    <Table className={"m-auto w-full  max-w-4xl"}>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Naam</TableHead>
-          <TableHead>Uitleen Periode</TableHead>
-          <TableHead>Notitie</TableHead>
-          <TableHead className={"w-8"}>Aantal</TableHead>
-          <TableHead className={"w-8"}></TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow>
-          <TableCell className="font-medium">Arduino Uno</TableCell>
-          <TableCell>17/05/2024 - 24/05/2024</TableCell>
-          <TableCell>Inclusief 10 breadboard kabeltjes</TableCell>
-          <TableCell className={"text-center"}>7</TableCell>
-          <TableCell className={"text-center"}>
-            <input type="checkbox" />
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+    <ItemsTable
+      items={items}
+      actionHeader={""}
+      actionCell={<input type="checkbox" />}
+    />
   );
 }
