@@ -1,4 +1,6 @@
+import BackButton from "@/components/BackButton";
 import Head from "next/head";
+import Link from "next/link";
 
 export default function main() {
   return (
@@ -63,11 +65,31 @@ export default function main() {
                         7
                       </td>
                       <td className="whitespace-nowrap px-6 py-4 text-end text-sm font-medium">
-                        <button
-                          type="button"
-                          className="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 disabled:pointer-events-none disabled:opacity-50"
-                        >
-                          Delete
+                        <button type="button">
+                          <svg
+                            width="16"
+                            height="17"
+                            viewBox="0 0 16 17"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <line
+                              x1="14.92"
+                              y1="1.70711"
+                              x2="0.777862"
+                              y2="15.8492"
+                              stroke="black"
+                              strokeWidth="2"
+                            />
+                            <line
+                              x1="0.707107"
+                              y1="1.2216"
+                              x2="14.8492"
+                              y2="15.3637"
+                              stroke="black"
+                              strokeWidth="2"
+                            />
+                          </svg>
                         </button>
                       </td>
                     </tr>
@@ -85,11 +107,31 @@ export default function main() {
                         7
                       </td>
                       <td className="whitespace-nowrap px-6 py-4 text-end text-sm font-medium">
-                        <button
-                          type="button"
-                          className="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 disabled:pointer-events-none disabled:opacity-50"
-                        >
-                          Delete
+                        <button type="button">
+                          <svg
+                            width="16"
+                            height="17"
+                            viewBox="0 0 16 17"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <line
+                              x1="14.92"
+                              y1="1.70711"
+                              x2="0.777862"
+                              y2="15.8492"
+                              stroke="black"
+                              strokeWidth="2"
+                            />
+                            <line
+                              x1="0.707107"
+                              y1="1.2216"
+                              x2="14.8492"
+                              y2="15.3637"
+                              stroke="black"
+                              strokeWidth="2"
+                            />
+                          </svg>
                         </button>
                       </td>
                     </tr>
@@ -107,11 +149,31 @@ export default function main() {
                         7
                       </td>
                       <td className="whitespace-nowrap px-6 py-4 text-end text-sm font-medium">
-                        <button
-                          type="button"
-                          className="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 disabled:pointer-events-none disabled:opacity-50"
-                        >
-                          Delete
+                        <button type="button">
+                          <svg
+                            width="16"
+                            height="17"
+                            viewBox="0 0 16 17"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <line
+                              x1="14.92"
+                              y1="1.70711"
+                              x2="0.777862"
+                              y2="15.8492"
+                              stroke="black"
+                              strokeWidth="2"
+                            />
+                            <line
+                              x1="0.707107"
+                              y1="1.2216"
+                              x2="14.8492"
+                              y2="15.3637"
+                              stroke="black"
+                              strokeWidth="2"
+                            />
+                          </svg>
                         </button>
                       </td>
                     </tr>
@@ -129,11 +191,31 @@ export default function main() {
                         7
                       </td>
                       <td className="whitespace-nowrap px-6 py-4 text-end text-sm font-medium">
-                        <button
-                          type="button"
-                          className="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 disabled:pointer-events-none disabled:opacity-50"
-                        >
-                          Delete
+                        <button type="button">
+                          <svg
+                            width="16"
+                            height="17"
+                            viewBox="0 0 16 17"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <line
+                              x1="14.92"
+                              y1="1.70711"
+                              x2="0.777862"
+                              y2="15.8492"
+                              stroke="black"
+                              strokeWidth="2"
+                            />
+                            <line
+                              x1="0.707107"
+                              y1="1.2216"
+                              x2="14.8492"
+                              y2="15.3637"
+                              stroke="black"
+                              strokeWidth="2"
+                            />
+                          </svg>
                         </button>
                       </td>
                     </tr>
@@ -151,11 +233,31 @@ export default function main() {
                         7
                       </td>
                       <td className="whitespace-nowrap px-6 py-4 text-end text-sm font-medium">
-                        <button
-                          type="button"
-                          className="inline-flex items-center gap-x-2 rounded-lg border border-transparent text-sm font-semibold text-blue-600 hover:text-blue-800 disabled:pointer-events-none disabled:opacity-50"
-                        >
-                          Delete
+                        <button type="button">
+                          <svg
+                            width="16"
+                            height="17"
+                            viewBox="0 0 16 17"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <line
+                              x1="14.92"
+                              y1="1.70711"
+                              x2="0.777862"
+                              y2="15.8492"
+                              stroke="black"
+                              strokeWidth="2"
+                            />
+                            <line
+                              x1="0.707107"
+                              y1="1.2216"
+                              x2="14.8492"
+                              y2="15.3637"
+                              stroke="black"
+                              strokeWidth="2"
+                            />
+                          </svg>
                         </button>
                       </td>
                     </tr>
@@ -165,6 +267,9 @@ export default function main() {
             </div>
           </div>
         </div>
+        <BackButton>
+          <Link href={"/"}>Log Uit</Link>
+        </BackButton>
       </main>
     </div>
   );
