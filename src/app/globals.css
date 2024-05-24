@@ -31,14 +31,6 @@
   top: 20px;
 }
 
-.form__field:focus {
-  padding-bottom: 5px;
-  font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right, #116399, #38caef);
-  border-image-slice: 1;
-}
-
 @layer base {
   * {
     @apply border-border;

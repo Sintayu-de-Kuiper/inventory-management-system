@@ -40,15 +40,12 @@ export default function Register() {
       </Head>
       <main
         className={
-          "from-gray-200 to-gray-100 flex h-screen min-h-screen flex-col items-center justify-center bg-gradient-to-b"
+          "flex h-screen min-h-screen flex-col items-center justify-center bg-gradient-to-b"
         }
       >
         <h1 className="mb-12 text-5xl font-bold ">Registratie</h1>
 
-        <form
-          onSubmit={handleSubmit}
-          className="items-centers flex w-full max-w-[300px] flex-col space-y-4"
-        >
+        <form onSubmit={handleSubmit} className="flex w-full flex-col ">
           <div className="p-4">
             <label htmlFor="firstName" className="text-gray-foreground text-lg">
               Voornaam
@@ -57,7 +54,7 @@ export default function Register() {
               id="firstName"
               name="firstName"
               type="text"
-              className="form__field focus:border-blue-500 block h-12 w-full p-2 text-lg focus:outline-none"
+              className="form__field block h-12 p-2 text-lg outline-none"
               placeholder=""
               required
             />
@@ -71,7 +68,7 @@ export default function Register() {
               id="lastName"
               name="lastName"
               type="text"
-              className="form__field focus:border-blue-500 block h-12 w-full p-2 text-lg focus:outline-none"
+              className="form__field block h-12 w-full p-2 text-lg focus:outline-none"
               placeholder=""
               required
             />
@@ -88,7 +85,7 @@ export default function Register() {
               id="studentNumber"
               name="studentNumber"
               type="text"
-              className="form__field focus:border-blue-500 block h-12 w-full p-2 text-lg focus:outline-none"
+              className="form__field block h-12 w-full p-2 text-lg focus:outline-none"
               placeholder=""
               required
             />
@@ -102,7 +99,7 @@ export default function Register() {
               id="className"
               name="className"
               type="text"
-              className="form__field focus:border-blue-500 block h-12 w-full p-2 text-lg focus:outline-none"
+              className="form__field block h-12 w-full p-2 text-lg focus:outline-none"
               placeholder=""
               required
             />
