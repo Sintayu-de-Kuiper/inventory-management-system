@@ -69,3 +69,11 @@
 .form__field:invalid {
   box-shadow: none;
 }
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
