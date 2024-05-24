@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { createUser } from "./create";
 import { Montserrat } from "next/font/google";
 import BackButton from "@/components/BackButton";
+import Button from "@/components/Button";
+import { cn } from "@/lib/utils";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -41,15 +43,18 @@ export default function Register() {
         <title>Register Page</title>
       </Head>
       <main
-        className={`${montserrat.className}  from-gray-200 to-gray-100 flex h-screen min-h-screen flex-col items-center justify-center bg-gradient-to-b`}
+        className={cn(
+          montserrat.className,
+          "from-gray-200 to-gray-100 flex h-screen min-h-screen flex-col items-center justify-center bg-gradient-to-b",
+        )}
       >
         <h1 className="mb-12 text-5xl font-bold ">Registratie</h1>
 
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-[300px] space-y-4"
+          className="items-centers flex w-full max-w-[300px] flex-col space-y-4"
         >
-          <div className="relative p-4">
+          <div className="p-4">
             <label htmlFor="voornaam" className="form__label">
               Voornaam
             </label>
@@ -63,7 +68,7 @@ export default function Register() {
             />
           </div>
 
-          <div className="relative p-4">
+          <div className="p-4">
             <label htmlFor="achternaam" className="form__label">
               Achternaam
             </label>
@@ -77,7 +82,7 @@ export default function Register() {
             />
           </div>
 
-          <div className="relative p-4">
+          <div className="p-4">
             <label htmlFor="studentnummer" className="form__label">
               Studentnummer
             </label>
@@ -91,7 +96,7 @@ export default function Register() {
             />
           </div>
 
-          <div className="relative p-4">
+          <div className="p-4">
             <label htmlFor="klasnaam" className="form__label">
               Cohort (2020-2021)
             </label>
@@ -104,12 +109,9 @@ export default function Register() {
               required
             />
           </div>
-          <button className="hover:bg-darker-accent absolute bottom-9 m-3 rounded-full bg-accent px-20 py-2 text-xl font-semibold text-primary">
-            Registeer
-          </button>
-          <BackButton>
-            <div className="text-text-gray  ">Annuleer</div>
-          </BackButton>
+
+          <Button className={"mx-auto mt-20"}>Registeer</Button>
+          <BackButton className="text-text-gray">Annuleer</BackButton>
         </form>
       </main>
     </div>
