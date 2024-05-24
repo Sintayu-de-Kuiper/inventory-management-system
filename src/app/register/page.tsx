@@ -37,11 +37,11 @@ export default function Register() {
   return (
     <main
       className={
-        "relative flex h-screen min-h-screen flex-col items-center justify-center"
+        "relative flex min-h-screen flex-col items-center justify-center px-8 py-12"
       }
     >
       <Head>
-        <title>Register Page TODO: Fix responsiveness</title>
+        <title>Register Page</title>
       </Head>
 
       <h1 className="mb-12 text-5xl font-bold ">Registratie</h1>
