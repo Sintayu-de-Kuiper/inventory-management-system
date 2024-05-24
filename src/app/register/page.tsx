@@ -3,12 +3,8 @@ import React, { FormEvent } from "react";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { createUser } from "./create";
-import { Montserrat } from "next/font/google";
 import BackButton from "@/components/BackButton";
 import Button from "@/components/Button";
-import { cn } from "@/lib/utils";
-
-const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function Register() {
   const router = useRouter();
@@ -43,10 +39,9 @@ export default function Register() {
         <title>Register Page</title>
       </Head>
       <main
-        className={cn(
-          montserrat.className,
-          "from-gray-200 to-gray-100 flex h-screen min-h-screen flex-col items-center justify-center bg-gradient-to-b",
-        )}
+        className={
+          "from-gray-200 to-gray-100 flex h-screen min-h-screen flex-col items-center justify-center bg-gradient-to-b"
+        }
       >
         <h1 className="mb-12 text-5xl font-bold ">Registratie</h1>
 
