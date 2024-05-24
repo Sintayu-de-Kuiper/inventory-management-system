@@ -18,19 +18,27 @@ const config = {
       },
     },
     colors: {
-      border: "#000000",
-      input: "#e5e5e5",
-      ring: "#0a0a0a",
-      background: "#ffffff",
-      foreground: "#000000",
       primary: {
-        DEFAULT: "#000000",
-        foreground: "#ffffff",
+        DEFAULT: "#ffffff",
+        foreground: "#000000",
       },
       secondary: {
         DEFAULT: "#000000",
         foreground: "#ffffff",
       },
+      accent: {
+        DEFAULT: "#6E71B6",
+        foreground: "#ffffff",
+      },
+      gray: {
+        DEFAULT: "#F2F2F2",
+        foreground: "#A5A5A5",
+      },
+      border: "#000000",
+      input: "#e5e5e5",
+      ring: "#0a0a0a",
+      background: "#ffffff",
+      foreground: "#000000",
       destructive: {
         DEFAULT: "#ef4444",
         foreground: "#fafafa",
@@ -39,11 +47,6 @@ const config = {
         DEFAULT: "#f5f5f5",
         foreground: "#737373",
       },
-      accent: {
-        DEFAULT: "#6d70b6",
-        foreground: "#ffffff",
-      },
-      "accent-hover": "#3F2F5E",
       popover: {
         DEFAULT: "#ffffff",
         foreground: "#000000",
