@@ -3,10 +3,10 @@ import React, { FormEvent } from "react";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { createUser } from "./create";
-import { Montserrat } from 'next/font/google'
+import { Montserrat } from "next/font/google";
 import BackButton from "@/components/BackButton";
 
-const montserrat = Montserrat({ subsets: ['latin'] })
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function Register() {
   const router = useRouter();
@@ -22,7 +22,6 @@ export default function Register() {
       className: formData.get("className") as string,
       passId: crypto.randomUUID(),
     };
-    
 
     const user = await createUser(userData);
     console.log(user);
@@ -37,71 +36,82 @@ export default function Register() {
   };
 
   return (
-    <div className="flex-col flex items-center relative">
+    <div className="relative flex flex-col items-center">
       <Head>
         <title>Register Page</title>
       </Head>
-      <main className={`${montserrat.className}  flex min-h-screen flex-col h-screen items-center justify-center bg-gradient-to-b from-gray-200 to-gray-100`}>
-      <h1 className="text-5xl font-bold mb-12 ">Registratie</h1>
+      <main
+        className={`${montserrat.className}  from-gray-200 to-gray-100 flex h-screen min-h-screen flex-col items-center justify-center bg-gradient-to-b`}
+      >
+        <h1 className="mb-12 text-5xl font-bold ">Registratie</h1>
 
-      <form onSubmit={handleSubmit} className="w-full max-w-[300px] space-y-4">
-        <div className="relative p-4">
-          <label htmlFor="voornaam" className="form__label">Voornaam</label>
-          <input
-            id="firstName"
-            name="firstName"
-            type="text"
-            className="form__field block w-full p-2 focus:border-blue-500 focus:outline-none text-lg h-12"
-            placeholder=""
-            required
-          />
-        </div>
-
-        <div className="relative p-4">
-          <label htmlFor="achternaam" className="form__label">Achternaam</label>
-          <input
-            id="lastName"
-            name="lastName"
-            type="text"
-            className="form__field block w-full p-2 focus:border-blue-500 focus:outline-none text-lg h-12"
-            placeholder=""
-            required
-          />
-        </div>
-
-        <div className="relative p-4">
-          <label htmlFor="studentnummer" className="form__label">Studentnummer</label>
-          <input
-            id="studentNumber"
-            name="studentNumber"
-            type="text"
-            className="form__field block w-full p-2 focus:border-blue-500 focus:outline-none text-lg h-12"
-            placeholder=""
-            required
-          />
-        </div>
-
-        <div className="relative p-4">
-          <label htmlFor="klasnaam" className="form__label">Cohort (2020-2021)</label>
-          <input
-            id="className"
-            name="className"
-            type="text"
-            className="form__field block w-full p-2 focus:border-blue-500 focus:outline-none text-lg h-12"
-            placeholder=""
-            required
-          />
-        </div>
-        <button className="bg-accent text-primary font-semibold text-xl py-2 px-20 m-3 rounded-full absolute bottom-9 hover:bg-darker-accent">Registeer</button>
-          <BackButton>
-          <div className="text-text-gray  ">
-            Annuleer
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-[300px] space-y-4"
+        >
+          <div className="relative p-4">
+            <label htmlFor="voornaam" className="form__label">
+              Voornaam
+            </label>
+            <input
+              id="firstName"
+              name="firstName"
+              type="text"
+              className="form__field focus:border-blue-500 block h-12 w-full p-2 text-lg focus:outline-none"
+              placeholder=""
+              required
+            />
           </div>
+
+          <div className="relative p-4">
+            <label htmlFor="achternaam" className="form__label">
+              Achternaam
+            </label>
+            <input
+              id="lastName"
+              name="lastName"
+              type="text"
+              className="form__field focus:border-blue-500 block h-12 w-full p-2 text-lg focus:outline-none"
+              placeholder=""
+              required
+            />
+          </div>
+
+          <div className="relative p-4">
+            <label htmlFor="studentnummer" className="form__label">
+              Studentnummer
+            </label>
+            <input
+              id="studentNumber"
+              name="studentNumber"
+              type="text"
+              className="form__field focus:border-blue-500 block h-12 w-full p-2 text-lg focus:outline-none"
+              placeholder=""
+              required
+            />
+          </div>
+
+          <div className="relative p-4">
+            <label htmlFor="klasnaam" className="form__label">
+              Cohort (2020-2021)
+            </label>
+            <input
+              id="className"
+              name="className"
+              type="text"
+              className="form__field focus:border-blue-500 block h-12 w-full p-2 text-lg focus:outline-none"
+              placeholder=""
+              required
+            />
+          </div>
+          <button className="hover:bg-darker-accent absolute bottom-9 m-3 rounded-full bg-accent px-20 py-2 text-xl font-semibold text-primary">
+            Registeer
+          </button>
+          <BackButton>
+            <div className="text-text-gray  ">Annuleer</div>
           </BackButton>
-          
-        
-      </form>
-    </main>
+        </form>
+      </main>
     </div>
   );
 }
