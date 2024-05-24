@@ -7,7 +7,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export default function ReturnItemsForm() {
+export default function LendItemsForm() {
   return (
     <Table className={"m-auto w-full  max-w-4xl"}>
       <TableHeader>
@@ -26,7 +26,14 @@ export default function ReturnItemsForm() {
           <TableCell>Inclusief 10 breadboard kabeltjes</TableCell>
           <TableCell className={"text-center"}>7</TableCell>
           <TableCell className={"text-center"}>
-            <input type="checkbox" />
+            <button
+              className={
+                "text-primary-foreground hover:text-primary-foreground/60"
+              }
+            >
+              {/* Cross character */}
+              &#10006;
+            </button>
           </TableCell>
         </TableRow>
       </TableBody>
