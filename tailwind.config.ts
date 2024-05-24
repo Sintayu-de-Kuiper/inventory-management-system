@@ -11,7 +11,7 @@ const config: Config = {
       primary: "#ffffff",
       secondary: "#000000",
       accent: "#6E71B6",
-      "accent-hover": "#3F2F5E",
+      "darker-accent": "#3F2F5E",
       gray: "#F2F2F2",
       "text-gray": "#A5A5A5",
     },

@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/navigation";
 import { createUser } from "./create";
 import { Montserrat } from 'next/font/google'
+import BackButton from "@/components/BackButton";
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -36,12 +37,12 @@ export default function Register() {
   };
 
   return (
-    <div>
+    <div className="flex-col flex items-center relative">
       <Head>
         <title>Register Page</title>
       </Head>
       <main className={`${montserrat.className}  flex min-h-screen flex-col h-screen items-center justify-center bg-gradient-to-b from-gray-200 to-gray-100`}>
-      <h1 className="text-6xl font-bold mb-4 ">Register</h1>
+      <h1 className="text-5xl font-bold mb-12 ">Registratie</h1>
 
       <form onSubmit={handleSubmit} className="w-full max-w-[300px] space-y-4">
         <div className="relative p-4">
@@ -91,12 +92,12 @@ export default function Register() {
             required
           />
         </div>
-        <button type="submit" className="bg hover:bg-purple-700 text-white font-bold py-2 px-4 border hover:border-purple-700 rounded">
-            Register
-          </button>
-          <div className="text-text-gray ">
+        <button className="bg-accent text-primary font-semibold text-xl py-2 px-20 m-3 rounded-full absolute bottom-9 hover:bg-darker-accent">Registeer</button>
+          <BackButton>
+          <div className="text-text-gray  ">
             Annuleer
           </div>
+          </BackButton>
           
         
       </form>
