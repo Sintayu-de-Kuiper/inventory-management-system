@@ -55,7 +55,7 @@ export default function Register() {
           className="items-centers flex w-full max-w-[300px] flex-col space-y-4"
         >
           <div className="p-4">
-            <label htmlFor="voornaam" className="form__label">
+            <label htmlFor="firstName" className="text-gray-foreground text-lg">
               Voornaam
             </label>
             <input
@@ -69,7 +69,7 @@ export default function Register() {
           </div>
 
           <div className="p-4">
-            <label htmlFor="achternaam" className="form__label">
+            <label htmlFor="lastName" className="text-gray-foreground text-lg">
               Achternaam
             </label>
             <input
@@ -83,7 +83,10 @@ export default function Register() {
           </div>
 
           <div className="p-4">
-            <label htmlFor="studentnummer" className="form__label">
+            <label
+              htmlFor="studentNumber"
+              className="text-gray-foreground text-lg"
+            >
               Studentnummer
             </label>
             <input
@@ -97,7 +100,7 @@ export default function Register() {
           </div>
 
           <div className="p-4">
-            <label htmlFor="klasnaam" className="form__label">
+            <label htmlFor="className" className="text-gray-foreground text-lg">
               Cohort (2020-2021)
             </label>
             <input

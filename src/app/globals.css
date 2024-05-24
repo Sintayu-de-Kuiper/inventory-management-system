@@ -31,16 +31,6 @@
   top: 20px;
 }
 
-.form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 20px;
-  color: #9b9b9b;
-  pointer-events: none;
-}
-
 .form__field:focus {
   padding-bottom: 5px;
   font-weight: 700;
@@ -50,10 +40,10 @@
 }
 
 @layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
