@@ -53,9 +53,7 @@ export default function Register() {
             <input
               id="firstName"
               name="firstName"
-              type="text"
               className="form__field block h-12 p-2 text-lg outline-none"
-              placeholder=""
               required
             />
           </div>
@@ -67,9 +65,7 @@ export default function Register() {
             <input
               id="lastName"
               name="lastName"
-              type="text"
-              className="form__field block h-12 w-full p-2 text-lg focus:outline-none"
-              placeholder=""
+              className="form__field block h-12 w-full p-2 text-lg outline-none"
               required
             />
           </div>
@@ -84,9 +80,7 @@ export default function Register() {
             <input
               id="studentNumber"
               name="studentNumber"
-              type="text"
-              className="form__field block h-12 w-full p-2 text-lg focus:outline-none"
-              placeholder=""
+              className="form__field block h-12 w-full p-2 text-lg outline-none"
               required
             />
           </div>
@@ -98,9 +92,7 @@ export default function Register() {
             <input
               id="className"
               name="className"
-              type="text"
-              className="form__field block h-12 w-full p-2 text-lg focus:outline-none"
-              placeholder=""
+              className="form__field block h-12 w-full p-2 text-lg outline-none"
               required
             />
           </div>
