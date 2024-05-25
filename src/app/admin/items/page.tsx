@@ -3,7 +3,7 @@ import Button from "@/components/Button";
 import BackButton from "@/components/BackButton";
 import ItemsOverview from "@/components/admin/items/ItemsOverview";
 
-export default function main() {
+export default function ItemOverview() {
   return (
     <main
       className={
