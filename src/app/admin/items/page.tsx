@@ -15,7 +15,7 @@ export default function main() {
       <Button className={"mx-auto w-fit"}>Nieuw item</Button>
 
       <BackButton>
-        <Link href={"/home"}>Klaar</Link>
+        <Link href={"/admin"}>Klaar</Link>
       </BackButton>
     </main>
   );
