@@ -39,7 +39,7 @@ export default function LoginPage() {
           <input
             id="studentNumber"
             name="studentNumber"
-            type="text"
+            type="number"
             className="form__field h-12 w-full p-2 text-lg outline-none"
             placeholder=""
             required
