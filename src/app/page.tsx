@@ -3,6 +3,7 @@
 import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { login } from "./login";
+import Button from "@/components/Button";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -23,24 +24,28 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col h-screen items-center justify-center bg-gradient-to-b from-gray-200 to-gray-100">
-    <form onSubmit={handleSubmit} className="w-full max-w-[300px] space-y-4">
-      <div className="relative p-4">
-          <label htmlFor="studentnummer" className="form__label">Studentnummer</label>
+    <main className="from-gray-200 to-gray-100 flex h-screen min-h-screen flex-col items-center justify-center bg-gradient-to-b">
+      <form
+        onSubmit={handleSubmit}
+        className=" flex w-64 flex-col items-center "
+      >
+        <div>
+          <label
+            htmlFor="studentnummer"
+            className={"text-lg text-gray-foreground"}
+          >
+            Studentnummer
+          </label>
           <input
             id="studentNumber"
             name="studentNumber"
             type="text"
-            className="form__field block w-full p-2 focus:border-blue-500 focus:outline-none text-lg h-12"
+            className="form__field h-12 w-full p-2 text-lg outline-none"
             placeholder=""
             required
           />
         </div>
-        <div className="flex justify-between items-center mt-4">
-          <button type="submit" className="bg-purple-500 hover:bg-purple-700 text-black font-bold py-2 px-4 border border-purple-700 rounded">
-            login
-          </button>
-        </div>
+        <Button className={"mt-10"}>Login</Button>
       </form>
     </main>
   );
