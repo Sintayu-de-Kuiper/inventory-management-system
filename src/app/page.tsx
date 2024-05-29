@@ -11,9 +11,9 @@ export default function LoginPage() {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-    const passId = formData.get("passId") as string;
+    const studentNumber = parseInt(formData.get("studentNumber") as string);
 
-    const user = await login(passId);
+    const user = await login(studentNumber);
 
     if (!user) {
       router.push("/register");
@@ -23,19 +23,24 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-gradient-to-b from-gray-200 to-gray-100">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="id" className="form__label text-gray-500">
-          Pas ID
-        </label>
-        <input
-          type="number"
-          className="form__field mt-4 block w-full border-b-2 border-gray-300 p-2 focus:border-blue-500 focus:outline-none"
-          placeholder="Pas ID"
-          name={"passId"}
-          required
-        />
-        <button>Log in</button>
+    <main className="flex min-h-screen flex-col h-screen items-center justify-center bg-gradient-to-b from-gray-200 to-gray-100">
+    <form onSubmit={handleSubmit} className="w-full max-w-[300px] space-y-4">
+      <div className="relative p-4">
+          <label htmlFor="studentnummer" className="form__label">Studentnummer</label>
+          <input
+            id="studentNumber"
+            name="studentNumber"
+            type="text"
+            className="form__field block w-full p-2 focus:border-blue-500 focus:outline-none text-lg h-12"
+            placeholder=""
+            required
+          />
+        </div>
+        <div className="flex justify-between items-center mt-4">
+          <button type="submit" className="bg-purple-500 hover:bg-purple-700 text-black font-bold py-2 px-4 border border-purple-700 rounded">
+            login
+          </button>
+        </div>
       </form>
     </main>
   );
