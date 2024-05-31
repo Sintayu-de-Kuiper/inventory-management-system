@@ -5,3 +5,12 @@ export interface Item {
   note: string;
   amount: number;
 }
+
+export interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  studentNumber: number;
+  cohort: string;
+  passId: string;
+}

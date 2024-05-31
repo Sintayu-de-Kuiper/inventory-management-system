@@ -1,11 +1,11 @@
 "use server";
-import { RegisterSchema } from "@/schemas";
-import { z } from "zod";
+
 import prisma from "@/lib/prisma";
+import { User } from "@/types";
 
 interface SuccessCreateUserResponse {
   success: true;
-  user: RegisterData;
+  user: User;
 }
 
 interface ErrorCreateUserResponse {
@@ -13,31 +13,41 @@ interface ErrorCreateUserResponse {
   errors: string[];
 }
 
+// User object without the id field
+type UserWithoutId = Omit<User, "id">;
+
 export async function createUser(
-  registerData: z.infer<typeof RegisterSchema>,
-): SuccessCreateUserResponse | ErrorCreateUserResponse {
-  "use server";
+  userData: UserWithoutId,
+): Promise<SuccessCreateUserResponse | ErrorCreateUserResponse> {
+  try {
+    const existingUser = await prisma.user.findUnique({
+      where: {
+        studentNumber: userData.studentNumber,
+      },
+    });
+    if (existingUser) {
+      return {
+        success: false,
+        errors: ["User with this student number already exists"],
+      };
+    }
 
-  const existingUser = await prisma.user.findUnique({
-    where: {
-      student_number: registerData.studentNumber,
-    },
-  });
-
-  if (existingUser) {
+    return {
+      success: true,
+      user: await prisma.user.create({
+        data: userData,
+      }),
+    };
+  } catch (error) {
+    if (error instanceof Error) {
+      return {
+        success: false,
+        errors: [error.message],
+      };
+    }
     return {
       success: false,
-      errors: ["User with this student number already exists"],
+      errors: ["An unknown error occurred"],
     };
   }
-
-  return prisma.user.create({
-    data: {
-      first_name: registerData.firstName,
-      last_name: registerData.lastName,
-      student_number: registerData.studentNumber,
-      class_name: registerData.className,
-      pass_id: registerData.passId,
-    },
-  });
 }
