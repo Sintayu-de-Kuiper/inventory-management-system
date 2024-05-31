@@ -19,7 +19,7 @@ export default function LoginPage() {
 
     if (!user) {
       // This should be a real passId soon. Now not implemented and id is generated.
-      router.push(`/register/${cuid()}`);
+      router.push(`/register/${cuid()}/${studentNumber}`);
     } else {
       router.push("/home");
     }

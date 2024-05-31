@@ -14,19 +14,30 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import React from "react";
-import { createUser } from "@/app/register/[passId]/create";
+import { createUser } from "@/app/register/[passId]/[studentNumber]/create";
 import { useParams, useRouter } from "next/navigation";
 
 export default function RegisterForm() {
   const router = useRouter();
-  const { passId } = useParams();
+  const { passId, studentNumber } = useParams();
 
-  const passIdSchema = z.string().min(1, "Pass ID is required");
+  const paramsSchema = z.object({
+    passId: z.string().min(1, "Pass ID is required"),
+    studentNumber: z
+      .string()
+      .refine((value) => !isNaN(Number(value)) && value !== "", {
+        message: "Student number must be a number",
+      })
+      .transform((value) => Number(value))
+      .refine((value) => value > 0, {
+        message: "Student number must be a positive number",
+      }),
+  });
+  const validatedParams = paramsSchema.safeParse({ passId, studentNumber });
 
-  if (!passIdSchema.safeParse(passId).success) {
-    alert("Pass ID is required");
+  if (!validatedParams.success) {
+    alert(`Invalid parameters! ${validatedParams.error.message}`);
     router.push("/");
-    return;
   }
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
@@ -34,7 +45,7 @@ export default function RegisterForm() {
     defaultValues: {
       firstName: "",
       lastName: "",
-      studentNumber: undefined,
+      studentNumber: validatedParams?.data?.studentNumber,
       cohort: "",
     },
   });
