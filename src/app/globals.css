@@ -2,32 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.container {
+  @apply mx-auto max-w-7xl px-4;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.form__group {
+  position: relative;
+  padding: 20px 0 0;
+  width: 100%;
+  max-width: 180px;
+}
+
+.form__field {
+  font-family: inherit;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #9b9b9b;
+  font-size: 25px;
+  padding: 5px 1px;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 17px;
+  cursor: text;
+  top: 20px;
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  body {
+    @apply bg-background text-foreground;
   }
 }
