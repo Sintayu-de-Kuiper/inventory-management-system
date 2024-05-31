@@ -18,5 +18,4 @@ export const RegisterSchema = z.object({
     .regex(/^\d{4}-\d{4}$/, {
       message: "Cohort must be in the format YYYY-YYYY",
     }),
-  passId: z.string().min(1, "Pass ID is required"),
 });

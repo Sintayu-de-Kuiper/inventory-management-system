@@ -4,6 +4,7 @@ import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { login } from "./login";
 import Button from "@/components/Button";
+import cuid from "cuid";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -17,7 +18,8 @@ export default function LoginPage() {
     const user = await login(studentNumber);
 
     if (!user) {
-      router.push("/register");
+      // This should be a real passId soon. Now not implemented and id is generated.
+      router.push(`/register/${cuid()}`);
     } else {
       router.push("/home");
     }
@@ -41,7 +43,6 @@ export default function LoginPage() {
             name="studentNumber"
             type="number"
             className="form__field h-12 w-full p-2 text-lg outline-none"
-            placeholder=""
             required
           />
         </div>

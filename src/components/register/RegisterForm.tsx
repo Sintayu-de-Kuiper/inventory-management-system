@@ -14,24 +14,38 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import React from "react";
-import { createUser } from "@/app/register/create";
-import { useRouter } from "next/navigation";
+import { createUser } from "@/app/register/[passId]/create";
+import { useParams, useRouter } from "next/navigation";
 
 export default function RegisterForm() {
   const router = useRouter();
+  const { passId } = useParams();
+
+  const passIdSchema = z.string().min(1, "Pass ID is required");
+
+  if (!passIdSchema.safeParse(passId).success) {
+    alert("Pass ID is required");
+    router.push("/");
+    return;
+  }
+
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
       firstName: "",
       lastName: "",
-      studentNumber: "",
+      studentNumber: undefined,
       cohort: "",
-      passId: "",
     },
   });
 
-  function onSubmit(data: z.infer<typeof RegisterSchema>) {
-    const response = await createUser(userData);
+  async function onSubmit(data: z.infer<typeof RegisterSchema>) {
+    alert("hello");
+
+    const response = await createUser({
+      ...data,
+      passId: passId as string,
+    });
     console.log(response);
 
     if (response.success) {
@@ -121,7 +135,10 @@ export default function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button className={"mx-auto mt-20"}>Registeer</Button>
+
+        <Button className={"mx-auto mt-20"} type={"submit"}>
+          Registeer
+        </Button>
       </form>
     </Form>
   );

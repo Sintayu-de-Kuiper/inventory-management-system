@@ -7,7 +7,7 @@ export async function login(studentNumber: number) {
   "use server";
   return prisma.user.findFirst({
     where: {
-      student_number: studentNumber,
+      studentNumber,
     },
   });
 }
