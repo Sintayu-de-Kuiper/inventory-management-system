@@ -51,8 +51,6 @@ export default function RegisterForm() {
   });
 
   async function onSubmit(data: z.infer<typeof RegisterSchema>) {
-    alert("hello");
-
     const response = await createUser({
       ...data,
       passId: passId as string,
@@ -60,10 +58,9 @@ export default function RegisterForm() {
     console.log(response);
 
     if (response.success) {
-      alert("User registered successfully!");
       router.push("/home");
     } else {
-      alert("User registration failed! Please try again later.");
+      alert(`Failed to create user: ${response.errors.join(", ")}`);
       router.push("/");
     }
   }
