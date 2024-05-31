@@ -12,7 +12,7 @@ import ItemRow from "@/components/items/ItemRow";
 interface ItemTableProps {
   items: Item[];
   actionHeader: ReactNode;
-  actionCell: ReactNode;
+  actionCell: (item: Item) => ReactNode;
 }
 
 export default function ItemsTable({
@@ -33,7 +33,7 @@ export default function ItemsTable({
       </TableHeader>
       <TableBody>
         {items.map((item) => (
-          <ItemRow key={item.id} item={item} actionCell={actionCell} />
+          <ItemRow key={item.id} item={item} actionCell={actionCell(item)} />
         ))}
       </TableBody>
     </Table>

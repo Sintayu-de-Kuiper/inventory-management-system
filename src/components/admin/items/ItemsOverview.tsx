@@ -1,5 +1,6 @@
 import ItemsTable from "@/components/items/ItemsTable";
 import Search from "@/components/admin/items/Search";
+import Link from "next/link";
 
 export default function ItemsOverview() {
   const items = [
@@ -25,16 +26,17 @@ export default function ItemsOverview() {
       <ItemsTable
         items={items}
         actionHeader={""}
-        actionCell={
+        actionCell={(item) => (
           <div className={"flex gap-3"}>
-            <button
+            <Link
+              href={"/admin/items/" + item.id}
               className={
                 "text-xl text-primary-foreground hover:text-primary-foreground/60"
               }
             >
               {/* Pencil character */}
               &#9998;
-            </button>
+            </Link>
             <button
               className={"text-xl text-destructive hover:text-destructive/60"}
             >
@@ -42,7 +44,7 @@ export default function ItemsOverview() {
               &#10006;
             </button>
           </div>
-        }
+        )}
       />
     </>
   );
