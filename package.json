@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.1.0",
     "@nestjs/common": "^10.3.8",
     "@prisma/client": "^5.13.0",
     "autoprefixer": "^10.4.19",
