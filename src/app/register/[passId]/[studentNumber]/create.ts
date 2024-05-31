@@ -2,6 +2,7 @@
 
 import prisma from "@/lib/prisma";
 import { User } from "@/types";
+import { signIn } from "@/auth";
 
 interface SuccessCreateUserResponse {
   success: true;
@@ -32,11 +33,18 @@ export async function createUser(
       };
     }
 
+    const user = await prisma.user.create({
+      data: userData,
+    });
+
+    await signIn("credentials", {
+      studentNumber: user.studentNumber,
+      redirect: false,
+    });
+
     return {
       success: true,
-      user: await prisma.user.create({
-        data: userData,
-      }),
+      user: user,
     };
   } catch (error) {
     if (error instanceof Error) {

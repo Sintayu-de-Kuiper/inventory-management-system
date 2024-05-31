@@ -13,3 +13,16 @@ export const RegisterSchema = z.object({
       message: "Cohort must be in the format YYYY-YYYY",
     }),
 });
+
+export const LoginSchema = z.object({
+  studentNumber: z
+    .string()
+    .min(1, "Student number is required")
+    .refine((value) => !isNaN(parseInt(value)), {
+      message: "Student number must be a number",
+    })
+    .transform((value) => parseInt(value))
+    .refine((value) => value > 0, {
+      message: "Student number must be a positive number",
+    }),
+});

@@ -2,9 +2,9 @@
 
 import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { login } from "./login";
 import Button from "@/components/Button";
 import cuid from "cuid";
+import { login } from "@/app/login";
 
 export default function LoginPage() {
   const router = useRouter();
