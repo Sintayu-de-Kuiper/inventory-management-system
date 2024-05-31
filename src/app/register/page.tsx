@@ -6,6 +6,7 @@ import { createUser } from "./create";
 import BackButton from "@/components/BackButton";
 import Button from "@/components/Button";
 import Link from "next/link";
+import { RegisterDataSchema } from "@/schemas";
 
 export default function Register() {
   const router = useRouter();
@@ -22,10 +23,17 @@ export default function Register() {
       passId: crypto.randomUUID(),
     };
 
-    const user = await createUser(userData);
-    console.log(user);
+    const validation = RegisterDataSchema.safeParse(registerData);
 
-    if (user) {
+    if (!validation.success) {
+      alert("Invalid data: " + validation.error.errors.join(", "));
+      return;
+    }
+
+    const response = await createUser(userData);
+    console.log(response);
+
+    if (response.success) {
       alert("User registered successfully!");
       router.push("/home");
     } else {

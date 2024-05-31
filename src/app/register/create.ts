@@ -1,18 +1,36 @@
 "use server";
-import { PrismaClient } from "@prisma/client";
+import { RegisterDataSchema } from "@/schemas";
+import { z } from "zod";
+import prisma from "@/lib/prisma";
 
-const prisma = new PrismaClient();
-
-interface RegisterData {
-  firstName: string;
-  lastName: string;
-  studentNumber: number;
-  className: string;
-  passId: string;
+interface SuccessCreateUserResponse {
+  success: true;
+  user: RegisterData;
 }
 
-export async function createUser(registerData: RegisterData) {
+interface ErrorCreateUserResponse {
+  success: false;
+  errors: string[];
+}
+
+export async function createUser(
+  registerData: z.infer<typeof RegisterDataSchema>,
+): SuccessCreateUserResponse | ErrorCreateUserResponse {
   "use server";
+
+  const existingUser = await prisma.user.findUnique({
+    where: {
+      student_number: registerData.studentNumber,
+    },
+  });
+
+  if (existingUser) {
+    return {
+      success: false,
+      errors: ["User with this student number already exists"],
+    };
+  }
+
   return prisma.user.create({
     data: {
       first_name: registerData.firstName,
