@@ -10,8 +10,8 @@ export const RegisterSchema = z.object({
     })
     .transform((value) => Number(value))
     .refine((value) => value > 0, {
-      message: "Student number must be a positive integer",
+      message: "Student number must be a positive number",
     }),
-  className: z.string().min(1, "Class name is required"),
+  cohort: z.string().min(1, "Cohort name is required"),
   passId: z.string().min(1, "Pass ID is required"),
 });
