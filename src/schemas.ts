@@ -12,6 +12,11 @@ export const RegisterSchema = z.object({
     .refine((value) => value > 0, {
       message: "Student number must be a positive number",
     }),
-  cohort: z.string().min(1, "Cohort name is required"),
+  cohort: z
+    .string()
+    .min(1, "Cohort is required")
+    .regex(/^\d{4}-\d{4}$/, {
+      message: "Cohort must be in the format YYYY-YYYY",
+    }),
   passId: z.string().min(1, "Pass ID is required"),
 });
