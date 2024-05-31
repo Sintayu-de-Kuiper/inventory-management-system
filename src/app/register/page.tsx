@@ -6,7 +6,8 @@ import { createUser } from "./create";
 import BackButton from "@/components/BackButton";
 import Button from "@/components/Button";
 import Link from "next/link";
-import { RegisterDataSchema } from "@/schemas";
+import { RegisterSchema } from "@/schemas";
+import RegisterForm from "@/components/register/RegisterForm";
 
 export default function Register() {
   const router = useRouter();
@@ -23,7 +24,7 @@ export default function Register() {
       passId: crypto.randomUUID(),
     };
 
-    const validation = RegisterDataSchema.safeParse(registerData);
+    const validation = RegisterSchema.safeParse(registerData);
 
     if (!validation.success) {
       alert("Invalid data: " + validation.error.errors.join(", "));
@@ -53,6 +54,8 @@ export default function Register() {
       </Head>
 
       <h1 className="mb-12 text-5xl font-bold ">Registratie</h1>
+
+      <RegisterForm />
 
       <form onSubmit={handleSubmit} className="flex flex-col">
         <div className="p-4">

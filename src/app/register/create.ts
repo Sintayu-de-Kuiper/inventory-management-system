@@ -1,5 +1,5 @@
 "use server";
-import { RegisterDataSchema } from "@/schemas";
+import { RegisterSchema } from "@/schemas";
 import { z } from "zod";
 import prisma from "@/lib/prisma";
 
@@ -14,7 +14,7 @@ interface ErrorCreateUserResponse {
 }
 
 export async function createUser(
-  registerData: z.infer<typeof RegisterDataSchema>,
+  registerData: z.infer<typeof RegisterSchema>,
 ): SuccessCreateUserResponse | ErrorCreateUserResponse {
   "use server";
 
