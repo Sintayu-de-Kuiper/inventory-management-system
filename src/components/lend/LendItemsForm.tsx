@@ -22,14 +22,14 @@ export default function LendItemsForm() {
     <ItemsTable
       items={items}
       actionHeader={""}
-      actionCell={
+      actionCell={() => (
         <button
           className={"text-primary-foreground hover:text-primary-foreground/60"}
         >
           {/* Cross character */}
           &#10006;
         </button>
-      }
+      )}
     />
   );
 }
