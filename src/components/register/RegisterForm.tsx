@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { RegisterSchema } from "@/schemas";
+import { RegisterParamsSchema, RegisterSchema } from "@/schemas";
 import Button from "@/components/Button";
 import {
   Form,
@@ -19,41 +19,31 @@ import { useParams, useRouter } from "next/navigation";
 
 export default function RegisterForm() {
   const router = useRouter();
-  const { passId, studentNumber } = useParams();
-
-  const paramsSchema = z.object({
-    passId: z.string().min(1, "Pass ID is required"),
-    studentNumber: z
-      .string()
-      .refine((value) => !isNaN(Number(value)) && value !== "", {
-        message: "Student number must be a number",
-      })
-      .transform((value) => Number(value))
-      .refine((value) => value > 0, {
-        message: "Student number must be a positive number",
-      }),
-  });
-  const validatedParams = paramsSchema.safeParse({ passId, studentNumber });
-
-  if (!validatedParams.success) {
-    alert(`Invalid parameters! ${validatedParams.error.message}`);
-    router.push("/");
-  }
-
+  const params = useParams();
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
       firstName: "",
       lastName: "",
-      studentNumber: validatedParams?.data?.studentNumber,
+      // Default value gets overwritten when the params are validated.
+      studentNumber: undefined,
       cohort: "",
     },
   });
 
+  const validatedParams = RegisterParamsSchema.safeParse(params);
+  if (!validatedParams.success) {
+    alert(`Invalid parameters! ${validatedParams.error.message}`);
+    router.push("/");
+    return null;
+  }
+  const { passId, studentNumber } = validatedParams.data;
+  form.setValue("studentNumber", studentNumber);
+
   async function onSubmit(data: z.infer<typeof RegisterSchema>) {
     const response = await createUser({
       ...data,
-      passId: passId as string,
+      passId: passId,
     });
     console.log(response);
 

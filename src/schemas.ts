@@ -19,3 +19,13 @@ export const LoginSchema = z.object({
     .number({ message: "Student number must be a number" })
     .positive("Student number must be a positive number"),
 });
+
+/**
+ * Schema for the parameters of the register page.
+ */
+export const RegisterParamsSchema = z.object({
+  passId: z.string().min(1, "Pass ID is required"),
+  studentNumber: z.coerce
+    .number({ message: "Student number must be a number" })
+    .positive("Student number must be a positive number"),
+});
