@@ -5,7 +5,6 @@ import { auth } from "@/auth";
 
 export default async function main() {
   const session = await auth();
-  console.log(session);
 
   if (!session) {
     alert("U bent niet ingelogd");
