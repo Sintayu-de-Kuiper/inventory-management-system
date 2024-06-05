@@ -10,7 +10,7 @@ export default auth(async (request) => {
   const session = request.auth;
 
   if (pathname === "/" && session) {
-    const redirectUrl = new URL("/api/auth/signout", request.url);
+    const redirectUrl = new URL("/api/logout", request.url);
     return NextResponse.redirect(redirectUrl);
   } else if (pathname !== "/" && !session) {
     const redirectUrl = new URL("/", request.url);
