@@ -3,7 +3,7 @@ import { z } from "zod";
 export const RegisterSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
-  studentNumber: z
+  studentNumber: z.coerce
     .number({ message: "Student number must be a number" })
     .positive("Student number must be a positive number"),
   cohort: z
@@ -15,14 +15,7 @@ export const RegisterSchema = z.object({
 });
 
 export const LoginSchema = z.object({
-  studentNumber: z
-    .string()
-    .min(1, "Student number is required")
-    .refine((value) => !isNaN(parseInt(value)), {
-      message: "Student number must be a number",
-    })
-    .transform((value) => parseInt(value))
-    .refine((value) => value > 0, {
-      message: "Student number must be a positive number",
-    }),
+  studentNumber: z.coerce
+    .number({ message: "Student number must be a number" })
+    .positive("Student number must be a positive number"),
 });

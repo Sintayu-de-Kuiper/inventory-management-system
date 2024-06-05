@@ -55,7 +55,6 @@ export default function LoginForm() {
               <FormControl>
                 <input
                   className="form__field block h-12 w-full p-2 text-lg outline-none"
-                  type={"number"}
                   {...field}
                 />
               </FormControl>
