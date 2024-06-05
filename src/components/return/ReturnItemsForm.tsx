@@ -22,7 +22,7 @@ export default function ReturnItemsForm() {
     <ItemsTable
       items={items}
       actionHeader={""}
-      actionCell={<input type="checkbox" />}
+      actionCell={()=><input type="checkbox" />}
     />
   );
 }
