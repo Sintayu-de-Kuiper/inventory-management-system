@@ -1,5 +1,6 @@
 # Software Requirements Specification: Inventory Management System
 
+<!-- prettier-ignore-start -->
 <!-- @formatter:off -->
 <!-- TOC -->
 
@@ -20,6 +21,7 @@
 - [What needs to be clear after this document:](#what-needs-to-be-clear-after-this-document)
   <!-- TOC -->
   <!-- @formatter:on -->
+  <!-- prettier-ignore-end -->
 
 ## 1. Introduction
 
@@ -29,50 +31,41 @@ This document goes over the scope, users, features and requirements of the Inven
 meant to aid in development and can be used to get product owner approval. Developers can use this document as a single
 source of truth so that everyone has a clear picture of what needs to be done.
 
-### 1.1 Purpose
-
-The system is meant to solve a handful of problems surrounding the management and lending of school items.
-
 ### 1.2 Intended Audience
 
-### 1.2 Intended Use
+### 1.3 Intended Use
 
-### 1.3 Product Scope
+### 1.4 Product Scope
 
 ### 1.5 Definitions, Acronyms, and Abbreviations
 
 - **IMS**: Inventory Management System
-- **Inleveren**: The Dutch term for "Return"
-- **Lenen**: The Dutch term for "Lend"
-- **Beheer**: The Dutch term for "Manage"
-- **Beheerders paneel**: The Dutch term for "Admin panel"
+- **Inleveren**: Dutch for "Return"
+- **Lenen**: Dutch for "Lend"
+- **Beheer**: Dutch for "Manage"
+- **Beheerders paneel**: Dutch for "Admin panel"
 
 ## 2. Overall Description
 
 ### 2.1 User Classes
 
-Roles are in order. Each Class has all the rights of all the above Classes.
-
-- **Student:**: This is the default user.
-- **Teachers**
-- **Admin**
+1. **Student**: Default user with basic lending and returning privileges.
+2. **Teachers**: Have additional access to administrative functions.
+3. **Admin**: Administrators with full control over items and user accounts.
 
 ### 2.2 User Needs
 
-- **Student:** Students will be able to lend and hand-in items. They will also be able to view their past lendings and
-  account details.
-- **Teachers:** Teachers have the same features as students, but they also get access to the _beheerders paneel_.
-- **Admin:** The administrator can add, edit and delete items and user accounts.
+- **Student**: Lending, returning, viewing past transactions.
+- **Teachers**: Same as students, plus access to administrative panel.
+- **Admin**: Add, edit, delete items and user accounts.
 
-### Operating Environment
+### 2.3 Operating Environment
 
-- One single computer
-- Windows
-- No acces to the internet
+- Single computer setup
+- Windows OS
+- Offline operation
 
-### Tech stack
-
-The system will be a web application. The following technologies will be used:
+### 2.4 Tech Stack
 
 - Next.js
 - TypeScript
@@ -80,151 +73,66 @@ The system will be a web application. The following technologies will be used:
 - Prisma with SQLite
 - Barcode/QR code scanner
 
-### System features and requirements
+### 2.5 System Features and Requirements
 
-#### Pages
+#### Pages Overview
 
-- Login: This is the page where a user needs to scan their card
-- Register: This is the page that is shown when a user scans their card for the first time. Here they can fill in their
-  details.
-- Home: Here you can choose between "Inleveren" or "Lenen" (and "Beheer" if the user is a teacher or higher)
-- Inleveren: Here you can see what you have lend and what you need to return
-- Lenen: Here you you can scan a barcode to lend an item
-- Beheer: Here you can add, edit and delete items and user accounts
+1. **Login**
+2. **Register**
+3. **Home**
+4. **Inleveren**
+5. **Lenen**
+6. **Beheer**
 
 #### Detailed Page Descriptions
 
-- **Login**
+### 3. Login
 
-  - **Purpose**: This page is meant to identify the user so that lend items can be tracked.
-  - **Features**:
-    - **Scan ncf card**: The user can scan their card to log-in
-  - **Questions**:
-    - Should the user be able to manually input their student number?
+- **Purpose**: Identification for tracking lent items.
+- **Features**:
+  - **Scan NFC card**: User can scan their card to log in.
 
-- **Register**
+### 4. Register
 
-  - **Purpose**: This page is meant to get the user's details so that they can be identified easier.
-  - **Features**:
-    - **Student number**: The user can input their student number.
-    - **Name**: The user can input their full name.
-    - **Class**: The user can input their class.
-    - **Register button**: The user can click on a button to register their account.
-  - **Questions**:
-    - Should this page ask for email or other details?
-    - Wat moet er gebeuren als de clas van de student veranderd? Misschien elk schooljaar een popup "Vul klas in"?
+- **Purpose**: User details collection for easy identification.
+- **Features**:
+  - **Student number**: Input field.
+  - **Name**: Input field.
+  - **Class**: Input field.
+  - **Register button**: Submission of user details.
+- **Questions**:
+  - Should this page ask for email or other details?
+  - Wat moet er gebeuren als de clas van de student veranderd? Misschien elk schooljaar een popup "Vul klas in"?
 
-- **Home**
+### 5. Home
 
-  - **Purpose**: This page is meant to give the user an overview of what they can do.
-  - **Features**:
-    - **Username**: The user can see their name in a heading greeting them.
-    - **Inleveren**: The user can click on a button to go to the "Inleveren" page
-    - **Lenen**: The user can click on a button to go to the "Lenen" page
-    - **Beheer**: The user can click on a button to go to the "Beheer" page
-  - **Questions**:
-    - Should the user be on this page or should there be a header and not a page?
+- **Purpose**: User overview and navigation.
+- **Features**:
+  - **Username**: Displayed in greeting.
+  - **Inleveren**: Redirect to "Inleveren" page.
+  - **Lenen**: Redirect to "Lenen" page.
+  - **Beheer**: Redirect to "Beheer" page. (only for admins)
+- **Questions**:
+  - Should the user be on this page or should there be a header and not a page?
 
-- **Inleveren**
+### 6. Inleveren
 
-  - **Purpose**: This page is meant to give the user an overview of what they have lend and what they need to return.
-  - **Features**:
-    - **List of lend items**: The user can see a list of items they have lend.
-    - **Per item in list**:
-      - **Name**: Name of the item.
-      - **Amount**: The user can see how many of the item they have lend.
-      - **Lend Period**: The user can see when they lend the item and when it needs to be returned.
-        - If the item is late the lend period should be red.
-      - **Return CheckBox**: The user can check the box to select the item to return.
-        - **Return Amount**: If The user has lent more of the item they can select how many items they want to
-          return.
-    - **Return button**: The user can click on a button to return an item.
-  - **Questions**:
-    - Should the user be able to see the history of lend items?
+- **Purpose**: View lent items and return.
+- **Features**:
+  - **List of lend items**: Display of items lent.
+  - **Per item**:
+    - Name, amount, lend period.
+    - Return checkbox
+    - Return amount selection.
+  - **Return button**: Submission of return action.
 
-- **Lenen**
-  - TODO
+### 7. Lenen
 
-# What needs to be clear after this document:
+TODO ###
 
-- What can a user do on each specific page
-
-<hr/>
-
-# Software Requirements for IMS
-
-## Requirements
-
-### Functional Requirements
-
-#### User Account Management
-
-| Requirement                                                     | MoSCoW |
-| --------------------------------------------------------------- | ------ |
-| Users must be able to register, log in, and log out.            | Must   |
-| Users can log in by scanning their school pass.                 | Must   |
-| If no account is found during login, redirect to register page. | Must   |
-| Users shall be able to edit their profile information.          | Must   |
-
-#### Inventory Check-out
-
-| Requirement                                                          | MoSCoW |
-| -------------------------------------------------------------------- | ------ |
-| Users must be able to check out items by scanning the QR-code.       | Must   |
-| The system shall record the time and date of item check-outs.        | Must   |
-| Users must be able to specify the expected return date at check-out. | Must   |
-| The system shall provide a summary of checked-out items to users.    | Must   |
-| The user must be able to add a note on item check-out                | Must   |
-
-#### Inventory Tracking
-
-| Requirement                                                                               | MoSCoW |
-| ----------------------------------------------------------------------------------------- | ------ |
-| The system must maintain an up-to-date list of all inventory items.                       | Must   |
-| Users should be able to search for items by name.                                         | Could  |
-| Inventory levels for all items must be automatically updated upon check-in and check-out. | Must   |
-| The system should allow tagging of items with electronic IDs (e.g., RFID).                | Could  |
-
-#### Inventory Check-in
-
-| Requirement                                                                  | MoSCoW |
-| ---------------------------------------------------------------------------- | ------ |
-| Users must be able to check in items by selecting them inside their account. | Must   |
-| The system shall verify the completeness of compound items upon check-in.    | Must   |
-| Users can update the count of sub-components if discrepancies are found.     | Must   |
-| The user must be able to add a note on item check-in                         | Must   |
-| The system should keep track of all discrepancies reported at check-in.      | Could  |
-
-#### Notification System
-
-| Requirement                                                                                   | MoSCoW |
-| --------------------------------------------------------------------------------------------- | ------ |
-| Users should receive notifications if their checked-out items are overdue (withing software). | Must   |
-| Notifications for item return reminders must be automated based on due dates.                 | Must   |
-
-#### Analytics
-
-| Requirement                                                           | MoSCoW |
-| --------------------------------------------------------------------- | ------ |
-| The system must generate reports on inventory usage patterns.         | Must   |
-| Administrators should be able to view real-time inventory statistics. | Won't  |
-
-#### Loss Reporting
-
-| Requirement                                                                         | MoSCoW |
-| ----------------------------------------------------------------------------------- | ------ |
-| Users must be able to report the loss of an item directly in the system.            | Must   |
-| The system should log details of the loss including time, user, and item specifics. | Must   |
-
-#### Threshold-Based Notification System
-
-| Requirement                                                                                    | MoSCoW |
-| ---------------------------------------------------------------------------------------------- | ------ |
-| The system must notify administrators when losses of a particular item exceed a set threshold. | Must   |
-| Loss thresholds should be adjustable by administrators.                                        | Must   |
-
-### Non-functional Requirements
-
-### System Features
-
-### Data Requirements
+- **Purpose**: Lending items.
+- **Features**:
+  - **Scan barcode**: Add item to lending list.
+  - **List of items**: Display of scanned items.
+  - **Per item**:
+    - Name, amount, lend button.
