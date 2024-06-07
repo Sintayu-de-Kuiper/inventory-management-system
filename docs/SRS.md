@@ -1,143 +1,230 @@
-# Software Requirements Specification for Inventory Management System (IMS)
+# Software Requirements Specification: Inventory Management System
 
-## Table of Contents
-- [1. Introduction](#1-introduction)
-  - [1.1 Purpose](#11-purpose)
-  - [1.2 Document Conventions](#12-document-conventions)
-  - [1.3 Intended Audience and Reading Suggestions](#13-intended-audience-and-reading-suggestions)
-  - [1.4 Project Scope](#14-project-scope)
-  - [1.5 References](#15-references)
-- [2. Overall Description](#2-overall-description)
-  - [2.1 Product Perspective](#21-product-perspective)
-  - [2.2 Product Features](#22-product-features)
-  - [2.3 User Classes and Characteristics](#23-user-classes-and-characteristics)
-  - [2.4 Operating Environment](#24-operating-environment)
-  - [2.5 Design and Implementation Constraints](#25-design-and-implementation-constraints)
-  - [2.6 User Documentation](#26-user-documentation)
-  - [2.7 Assumptions and Dependencies](#27-assumptions-and-dependencies)
-- [3. System Features](#3-system-features)
-  - [3.1 System Feature 1](#31-system-feature-1)
-    - [3.1.1 Description and Priority](#311-description-and-priority)
-    - [3.1.2 Stimulus/Response Sequences](#312-stimulusresponse-sequences)
-    - [3.1.3 Functional Requirements](#313-functional-requirements)
-  - [3.2 System Feature 2 (and so on)](#32-system-feature-2-and-so-on)
-- [4. External Interface Requirements](#4-external-interface-requirements)
-  - [4.1 User Interfaces](#41-user-interfaces)
-  - [4.2 Hardware Interfaces](#42-hardware-interfaces)
-  - [4.3 Software Interfaces](#43-software-interfaces)
-  - [4.4 Communications Interfaces](#44-communications-interfaces)
-- [5. Other Nonfunctional Requirements](#5-other-nonfunctional-requirements)
-  - [5.1 Performance Requirements](#51-performance-requirements)
-  - [5.2 Safety Requirements](#52-safety-requirements)
-  - [5.3 Security Requirements](#53-security-requirements)
-  - [5.4 Software Quality Attributes](#54-software-quality-attributes)
-    - [5.4.1 Reliability](#541-reliability)
-    - [5.4.2 Availability](#542-availability)
-    - [5.4.3 Scalability](#543-scalability)
-    - [5.4.4 Maintainability](#544-maintainability)
-    - [5.4.5 Portability](#545-portability)
-- [6. Other Requirements](#6-other-requirements)
-- [Appendix A: Glossary](#appendix-a-glossary)
-- [Appendix B: Analysis Models](#appendix-b-analysis-models)
-- [Appendix C: To Be Determined List](#appendix-c-to-be-determined-list)
+<!-- @formatter:off -->
+<!-- TOC -->
+
+- [Software Requirements Specification: Inventory Management System](#software-requirements-specification-inventory-management-system)
+  - [1. Introduction](#1-introduction)
+    - [1.1 Document Purpose](#11-document-purpose)
+    - [1.1 Purpose](#11-purpose)
+    - [1.2 Intended Audience](#12-intended-audience)
+    - [1.2 Intended Use](#12-intended-use)
+    - [1.3 Product Scope](#13-product-scope)
+    - [1.5 Definitions, Acronyms, and Abbreviations](#15-definitions-acronyms-and-abbreviations)
+  - [2. Overall Description](#2-overall-description)
+    - [2.1 User Classes](#21-user-classes)
+    - [2.2 User Needs](#22-user-needs)
+    - [Operating Environment](#operating-environment)
+    - [System features and requirements](#system-features-and-requirements)
+      - [Pages](#pages)
+- [What needs to be clear after this document:](#what-needs-to-be-clear-after-this-document)
+  <!-- TOC -->
+  <!-- @formatter:on -->
 
 ## 1. Introduction
 
+### 1.1 Document Purpose
+
+This document goes over the scope, users, features and requirements of the Inventory Management System. This document is
+meant to aid in development and can be used to get product owner approval. Developers can use this document as a single
+source of truth so that everyone has a clear picture of what needs to be done.
+
 ### 1.1 Purpose
-The purpose of this document is to provide a detailed overview of our Inventory Management System - the goals it is designed to achieve.
 
-### 1.2 Scope
-This document details the software requirements for the Inventory Management System. It outlines the system's capabilities, interfaces, and intended users. This system will manage inventory tracking, user authentication, and reporting within a local, offline environment.
+The system is meant to solve a handful of problems surrounding the management and lending of school items.
 
-### 1.3 Definitions, Acronyms, and Abbreviations
+### 1.2 Intended Audience
+
+### 1.2 Intended Use
+
+### 1.3 Product Scope
+
+### 1.5 Definitions, Acronyms, and Abbreviations
+
 - **IMS**: Inventory Management System
-- **UI**: User Interface
-- **RFID**: Radio Frequency Identification
-
-### 1.5 Overview
-The subsequent sections provide a comprehensive breakdown of the system's functionality, user requirements, and non-functional requirements.
+- **Inleveren**: The Dutch term for "Return"
+- **Lenen**: The Dutch term for "Lend"
+- **Beheer**: The Dutch term for "Manage"
+- **Beheerders paneel**: The Dutch term for "Admin panel"
 
 ## 2. Overall Description
 
-### 2.1 Product Perspective
-The Inventory Management System is a standalone application designed to run offline on local hardware, providing inventory tracking and management capabilities without the need for internet connectivity.
+### 2.1 User Classes
 
-### 2.2 Product Functions
-- Track inventory with QR codes.
-- Authenticate users through a RFID tags.
-- Generate reports on inventory status and history.
+Roles are in order. Each Class has all the rights of all the above Classes.
 
-### 2.3 User Classes and Characteristics
-- **Admins**: Manage inventory and user accounts.
-- **Users**: Access inventory tracking and checkout features.
+- **Student:**: This is the default user.
+- **Teachers**
+- **Admin**
 
-### 2.4 Operating Environment
-The IMS will operate on a standard PC running Windows 10 or newer, without the need for internet access.
+### 2.2 User Needs
 
-### 2.5 Design and Implementation Constraints
-- The system must function entirely offline.
-- The system must be user-friendly and require minimal training.
+- **Student:** Students will be able to lend and hand-in items. They will also be able to view their past lendings and
+  account details.
+- **Teachers:** Teachers have the same features as students, but they also get access to the _beheerders paneel_.
+- **Admin:** The administrator can add, edit and delete items and user accounts.
 
-## 3. System Features
+### Operating Environment
 
-### 3.1 Feature 1: Inventory Tracking
-#### Description and Priority
-High priority. Enables tracking of inventory items using QR codes and RFID tags.
+- One single computer
+- Windows
+- No acces to the internet
 
-#### Stimulus/Response Sequences
-Users scan item tags to check in or out inventory items.
+### Tech stack
 
-#### Functional Requirements
-- FR1: The system shall allow QR code scanning to identify items.
-- FR2: The system shall support RFID tag reading for inventory tracking.
+The system will be a web application. The following technologies will be used:
 
-### 3.2 Feature 2: User Authentication
-#### Description and Priority
-Medium priority. Securely identifies users before allowing access to the system.
+- Next.js
+- TypeScript
+- TailwindCSS
+- Prisma with SQLite
+- Barcode/QR code scanner
 
-#### Stimulus/Response Sequences
-Users log in using credentials verified by the system.
+### System features and requirements
 
-#### Functional Requirements
-- FR1: The system shall authenticate users before allowing access to inventory management features.
+#### Pages
 
-## 4. External Interface Requirements
+- Login: This is the page where a user needs to scan their card
+- Register: This is the page that is shown when a user scans their card for the first time. Here they can fill in their
+  details.
+- Home: Here you can choose between "Inleveren" or "Lenen" (and "Beheer" if the user is a teacher or higher)
+- Inleveren: Here you can see what you have lend and what you need to return
+- Lenen: Here you you can scan a barcode to lend an item
+- Beheer: Here you can add, edit and delete items and user accounts
 
-### 4.1 User Interfaces
-- The system shall provide a graphical user interface for all user interactions.
+#### Detailed Page Descriptions
 
-### 4.2 Hardware Interfaces
-- The system requires a PC with a USB port for the RFID reader and a camera for QR code scanning.
+- **Login**
 
-### 4.3 Software Interfaces
-- The system shall operate on Windows 10 or newer.
+  - **Purpose**: This page is meant to identify the user so that lend items can be tracked.
+  - **Features**:
+    - **Scan ncf card**: The user can scan their card to log-in
+  - **Questions**:
+    - Should the user be able to manually input their student number?
 
-### 4.4 Communications Interfaces
-- N/A, as the system operates offline.
+- **Register**
 
-## 5. Other Nonfunctional Requirements
+  - **Purpose**: This page is meant to get the user's details so that they can be identified easier.
+  - **Features**:
+    - **Student number**: The user can input their student number.
+    - **Name**: The user can input their full name.
+    - **Class**: The user can input their class.
+    - **Register button**: The user can click on a button to register their account.
+  - **Questions**:
+    - Should this page ask for email or other details?
+    - Wat moet er gebeuren als de clas van de student veranderd? Misschien elk schooljaar een popup "Vul klas in"?
 
-### 5.1 Performance Requirements
-- The system shall respond to user input within 2 seconds.
+- **Home**
 
-### 5.2 Safety Requirements
-- The system shall securely store user credentials and inventory data.
+  - **Purpose**: This page is meant to give the user an overview of what they can do.
+  - **Features**:
+    - **Username**: The user can see their name in a heading greeting them.
+    - **Inleveren**: The user can click on a button to go to the "Inleveren" page
+    - **Lenen**: The user can click on a button to go to the "Lenen" page
+    - **Beheer**: The user can click on a button to go to the "Beheer" page
+  - **Questions**:
+    - Should the user be on this page or should there be a header and not a page?
 
-### 5.3 Security Requirements
-- The system shall encrypt sensitive data stored locally.
+- **Inleveren**
 
-### 5.4 Software Quality Attributes
-- Reliability: The system shall operate consistently under expected conditions.
-- Usability: The system shall be easy to use with minimal training.
+  - **Purpose**: This page is meant to give the user an overview of what they have lend and what they need to return.
+  - **Features**:
+    - **List of lend items**: The user can see a list of items they have lend.
+    - **Per item in list**:
+      - **Name**: Name of the item.
+      - **Amount**: The user can see how many of the item they have lend.
+      - **Lend Period**: The user can see when they lend the item and when it needs to be returned.
+        - If the item is late the lend period should be red.
+      - **Return CheckBox**: The user can check the box to select the item to return.
+        - **Return Amount**: If The user has lent more of the item they can select how many items they want to
+          return.
+    - **Return button**: The user can click on a button to return an item.
+  - **Questions**:
+    - Should the user be able to see the history of lend items?
 
-## 6. Other Requirements
-Specify any additional requirements not covered by the previous sections.
+- **Lenen**
+  - TODO
 
-## Appendix A: Glossary
-Define all the terms and acronyms used throughout the document.
+# What needs to be clear after this document:
 
-## Appendix B: Analyzing Data
-Detail any data analysis methods or requirements relevant to the project.
+- What can a user do on each specific page
 
-## Appendix C: To Be Determined List
-List any items that are still under consideration or need further research.
+<hr/>
+
+# Software Requirements for IMS
+
+## Requirements
+
+### Functional Requirements
+
+#### User Account Management
+
+| Requirement                                                     | MoSCoW |
+| --------------------------------------------------------------- | ------ |
+| Users must be able to register, log in, and log out.            | Must   |
+| Users can log in by scanning their school pass.                 | Must   |
+| If no account is found during login, redirect to register page. | Must   |
+| Users shall be able to edit their profile information.          | Must   |
+
+#### Inventory Check-out
+
+| Requirement                                                          | MoSCoW |
+| -------------------------------------------------------------------- | ------ |
+| Users must be able to check out items by scanning the QR-code.       | Must   |
+| The system shall record the time and date of item check-outs.        | Must   |
+| Users must be able to specify the expected return date at check-out. | Must   |
+| The system shall provide a summary of checked-out items to users.    | Must   |
+| The user must be able to add a note on item check-out                | Must   |
+
+#### Inventory Tracking
+
+| Requirement                                                                               | MoSCoW |
+| ----------------------------------------------------------------------------------------- | ------ |
+| The system must maintain an up-to-date list of all inventory items.                       | Must   |
+| Users should be able to search for items by name.                                         | Could  |
+| Inventory levels for all items must be automatically updated upon check-in and check-out. | Must   |
+| The system should allow tagging of items with electronic IDs (e.g., RFID).                | Could  |
+
+#### Inventory Check-in
+
+| Requirement                                                                  | MoSCoW |
+| ---------------------------------------------------------------------------- | ------ |
+| Users must be able to check in items by selecting them inside their account. | Must   |
+| The system shall verify the completeness of compound items upon check-in.    | Must   |
+| Users can update the count of sub-components if discrepancies are found.     | Must   |
+| The user must be able to add a note on item check-in                         | Must   |
+| The system should keep track of all discrepancies reported at check-in.      | Could  |
+
+#### Notification System
+
+| Requirement                                                                                   | MoSCoW |
+| --------------------------------------------------------------------------------------------- | ------ |
+| Users should receive notifications if their checked-out items are overdue (withing software). | Must   |
+| Notifications for item return reminders must be automated based on due dates.                 | Must   |
+
+#### Analytics
+
+| Requirement                                                           | MoSCoW |
+| --------------------------------------------------------------------- | ------ |
+| The system must generate reports on inventory usage patterns.         | Must   |
+| Administrators should be able to view real-time inventory statistics. | Won't  |
+
+#### Loss Reporting
+
+| Requirement                                                                         | MoSCoW |
+| ----------------------------------------------------------------------------------- | ------ |
+| Users must be able to report the loss of an item directly in the system.            | Must   |
+| The system should log details of the loss including time, user, and item specifics. | Must   |
+
+#### Threshold-Based Notification System
+
+| Requirement                                                                                    | MoSCoW |
+| ---------------------------------------------------------------------------------------------- | ------ |
+| The system must notify administrators when losses of a particular item exceed a set threshold. | Must   |
+| Loss thresholds should be adjustable by administrators.                                        | Must   |
+
+### Non-functional Requirements
+
+### System Features
+
+### Data Requirements

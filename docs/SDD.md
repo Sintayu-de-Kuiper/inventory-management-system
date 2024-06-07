@@ -6,9 +6,9 @@ This schema is coming soon and is made with [Mermaid](https://mermaid.js.org/syn
 
 ```mermaid
 erDiagram
-    TRANSACTION_ITEM ||--|| ITEM : contains
-    TRANSACTION_ITEM ||--|| TRANSACTION : belongs_to
-    TRANSACTION ||--|| USER : belongs-to
+    USER ||--o{ TRANSACTION: Contains
+    TRANSACTION ||--o{ TRANSACTION_ITEM: Contains
+    TRANSACTION_ITEM }o--|| ITEM: Contains
 
     USER {
         int id PK
@@ -17,15 +17,16 @@ erDiagram
         string last_name
         string student_number
         string class_name
+        int[] transaction_id FK
     }
 
     ITEM {
-        int item_id PK
+        int id PK
         string name
         boolean is_student_lendable
     }
 
-    TRANSACTION_ITEM{
+    TRANSACTION_ITEM {
         int id PK
         int transaction_id FK
         int item_id FK
@@ -38,6 +39,7 @@ erDiagram
     TRANSACTION{
         int id PK
         int user_id FK
+        int[] transaction_item_id FK
         string date
         string type
     }
