@@ -13,15 +13,17 @@ interface ItemTableProps {
   items: Item[];
   actionHeader: ReactNode;
   actionCell: ReactNode;
+  className? : string;
 }
 
 export default function ItemsTable({
   items,
   actionHeader,
   actionCell,
+  className,
 }: Readonly<ItemTableProps>) {
   return (
-    <Table className={"m-auto w-full  max-w-4xl"}>
+    <Table className={`m-auto w-full  max-w-4xl ${className}`}>
       <TableHeader>
         <TableRow>
           <TableHead>Naam</TableHead>
