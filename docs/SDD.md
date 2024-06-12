@@ -6,41 +6,59 @@ This schema is coming soon and is made with [Mermaid](https://mermaid.js.org/syn
 
 ```mermaid
 erDiagram
-    USER ||--o{ TRANSACTION: Contains
-    TRANSACTION ||--o{ TRANSACTION_ITEM: Contains
-    TRANSACTION_ITEM }o--|| ITEM: Contains
-
     USER {
-        int id PK
-        string pass_id
-        string first_name
-        string last_name
-        string student_number
-        string class_name
-        int[] transaction_id FK
+        int UserID PK
+        string Name
+        string Role
+        string Email
+        string PasswordHash
+        timestamp CreatedAt
+        timestamp UpdatedAt
     }
 
     ITEM {
-        int id PK
-        string name
-        boolean is_student_lendable
+        int ItemID PK
+        string ItemName
+        string Barcode
+        string Category
+        boolean Restricted
+        timestamp CreatedAt
+        timestamp UpdatedAt
     }
 
-    TRANSACTION_ITEM {
-        int id PK
-        int transaction_id FK
-        int item_id FK
-        int item_quantity
-        string transaction_notes
-        date start_date
-        date end_date
+    TRANSACTION {
+        int TransactionID PK
+        int UserID FK
+        string TransactionType
+        timestamp TransactionDate
+        timestamp CreatedAt
+        timestamp UpdatedAt
     }
 
-    TRANSACTION{
-        int id PK
-        int user_id FK
-        int[] transaction_item_id FK
-        string date
-        string type
+    TRANSACTIONITEM {
+        int TransactionItemID PK
+        int TransactionID FK
+        int ItemID FK
+        timestamp StartDate
+        timestamp EndDate
+        string Notes
     }
+
+    ADMIN {
+        int AdminID PK
+        string Name
+        string Email
+        string PasswordHash
+        timestamp CreatedAt
+        timestamp UpdatedAt
+    }
+
+    USER ||--o{ TRANSACTION : "can make"
+    ITEM ||--o{ TRANSACTIONITEM : "can be part of"
+    TRANSACTION ||--o{ TRANSACTIONITEM : "can involve"
+    ADMIN ||--o{ TRANSACTION : "can view"
+
+    TRANSACTION }|--|| USER : "is made by"
+    TRANSACTIONITEM }|--|| TRANSACTION : "belongs to"
+    TRANSACTIONITEM }|--|| ITEM : "involves"
 ```
