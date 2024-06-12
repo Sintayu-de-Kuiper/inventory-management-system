@@ -17,7 +17,7 @@ export default function main() {
         className="bg-transparent   h-1/5 w-3/5 justify-self-center rounded-full p-2 px-2 shadow-md outline-none"
         placeholder="Search..."
       />
-      <div className="flex-grow-1">
+      <div className="flex-grow">
         <ZoekenTable />
       </div>
       <Button className={"mx-auto w-fit"}>Inleveren</Button>
