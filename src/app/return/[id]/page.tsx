@@ -28,7 +28,7 @@ const ReturnPage = () => {
           <div className="relative clear-both my-4 flex items-center justify-center">
             <button
               onClick={handleDecrease}
-              className="bg-gray-200 border-gray-200 hover:bg-gray-300 h-10 w-10 border p-0 font-bold transition-all duration-300 ease-in-out focus:outline-none"
+              className="bg-gray-200 rounded-l-lg border-gray-200 hover:bg-gray-300 h-10 w-10 border p-0 font-bold transition-all duration-300 ease-in-out focus:outline-none"
             >
               -
             </button>
@@ -41,7 +41,7 @@ const ReturnPage = () => {
             />
             <button
               onClick={handleIncrease}
-              className="bg-gray-200 border-gray-200 hover:bg-gray-300 -left-2 h-10 w-10 border p-0 font-bold transition-all duration-300 ease-in-out focus:outline-none"
+              className="bg-gray-200 rounded-r-lg border-gray-200 hover:bg-gray-300 -left-2 h-10 w-10 border p-0 font-bold transition-all duration-300 ease-in-out focus:outline-none"
             >
               +
             </button>
@@ -54,7 +54,7 @@ const ReturnPage = () => {
           <textarea
             id="note"
             rows={3}
-            className="border-gray-300 w-full rounded-lg border p-2 focus:outline-none"
+            className=" w-full rounded-lg  p-2 focus:outline-none"
             placeholder="Lorem ipsum dolor sit amet, consectetur etc..."
           ></textarea>
         </div>
