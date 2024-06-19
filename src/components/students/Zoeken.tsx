@@ -1,7 +1,11 @@
 import ItemsTable from "@/components/items/ItemsTable";
 import TrashIcon from "@/components/TrashIcon"
 
-export default function LendItemsForm() {
+interface LendItemsFormProps {
+  search: string;
+}
+
+export default function LendItemsForm({search}: Readonly<LendItemsFormProps>) {
   const items = [
     {
       id: "1",
@@ -21,7 +25,7 @@ export default function LendItemsForm() {
 
   return (
     <ItemsTable
-      items={items}
+      items={items.filter((item) => item.name.includes(search))}
       actionHeader={""}
       actionCell={
         <button
