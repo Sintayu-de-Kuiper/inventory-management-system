@@ -8,9 +8,40 @@ export interface Item {
 
 export interface User {
   id: string;
+  fullName: string;
   firstName: string;
   lastName: string;
   studentNumber: number;
   cohort: string;
-  passId: string;
+}
+
+// Augment module 'next-auth' with custom types
+declare module "next-auth" {
+  interface Session {
+    user: User;
+  }
+
+  interface User extends User {
+    id: string;
+    fullName: string;
+    firstName: string;
+    lastName: string;
+    studentNumber: number;
+    cohort: string;
+  }
+}
+
+declare module "next-auth/adapters" {
+  interface AdapterUser extends User {}
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    id: string;
+    fullName: string;
+    firstName: string;
+    lastName: string;
+    studentNumber: number;
+    cohort: string;
+  }
 }
