@@ -21,7 +21,7 @@ declare module "next-auth" {
     user: User;
   }
 
-  interface User extends User {
+  interface User {
     id: string;
     fullName: string;
     firstName: string;
@@ -31,8 +31,8 @@ declare module "next-auth" {
   }
 }
 
-declare module "next-auth/adapters" {
-  interface AdapterUser extends User {}
+declare module "next-auth/core/adapters" {
+  type AdapterUser = User;
 }
 
 declare module "next-auth/jwt" {

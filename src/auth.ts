@@ -17,10 +17,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           const user = await prisma.user.findUnique({
             where: { studentNumber },
           });
+
           if (!user) {
-            throw new Error("No user found");
+            return null;
           }
-          return user;
+
+          return {
+            ...user,
+            fullName: `${user.firstName} ${user.lastName}`,
+          };
         } catch (error) {
           console.error("Authorize error:", error);
           return null;
@@ -51,6 +56,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         lastName: token.lastName as string,
         studentNumber: token.studentNumber as number,
         cohort: token.cohort as string,
+        emailVerified: null,
+        email: "",
       };
       console.log("Session callback - session:", session);
       return session;
