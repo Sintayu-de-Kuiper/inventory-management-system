@@ -15,7 +15,7 @@ export default function AdminHome() {
         </Button>
       </div>
       <BackButton>
-        <Link href={"/admin"}>Terug</Link>
+        <Link href={"/home"}>Terug</Link>
       </BackButton>
     </main>
   );
