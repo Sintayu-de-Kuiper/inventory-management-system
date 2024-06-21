@@ -14,6 +14,7 @@ model User {
   studentNumber Int    @unique @map("student_number")
   cohort        String
   passId        String @unique @map("pass_id")
+  role          Int   @default(1) // Refer to the Role enum types.d.ts
 }
 
 model Inventory {
@@ -21,3 +22,4 @@ model Inventory {
   name        String
   description String
 }
+

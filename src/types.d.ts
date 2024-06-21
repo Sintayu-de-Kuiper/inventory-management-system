@@ -6,6 +6,11 @@ export interface Item {
   amount: number;
 }
 
+enum Role {
+  ADMIN,
+  USER,
+}
+
 export interface User {
   id: string;
   fullName: string;
@@ -15,7 +20,6 @@ export interface User {
   cohort: string;
 }
 
-// Augment module 'next-auth' with custom types
 declare module "next-auth" {
   interface Session {
     user: User;
