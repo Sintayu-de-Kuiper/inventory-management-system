@@ -6,7 +6,7 @@ export default function AdminHome() {
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center">
       <h1 className="text-5xl">Hallo Admin &lt;naam&gt;!</h1>
-      <div className={"mt-12 grid grid-cols-3 gap-5"}>
+      <div className={"mt-12 grid grid-cols-2 gap-5"}>
         <Button>
           <Link href={"/admin/items"}>items</Link>
         </Button>
