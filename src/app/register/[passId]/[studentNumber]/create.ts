@@ -44,7 +44,7 @@ export async function createUser(
 
     return {
       success: true,
-      user: user,
+      user: { ...user, fullName: `${user.firstName} ${user.lastName}` },
     };
   } catch (error) {
     if (error instanceof Error) {

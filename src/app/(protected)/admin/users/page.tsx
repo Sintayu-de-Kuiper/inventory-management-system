@@ -1,15 +1,15 @@
-import Link from "next/link";
 import BackButton from "@/components/BackButton";
-import SearchItems from "@/components/admin/items/SearchItems";
+import Link from "next/link";
+import SearchStudents from "@/components/admin/students/SearchStudents";
 
-export default function ItemOverview() {
+export default function main() {
   return (
     <main
       className={
         "relative flex min-h-screen flex-col items-center gap-10 px-10 py-12"
       }
     >
-      <SearchItems />
+      <SearchStudents />
 
       <BackButton>
         <Link href={"/admin"}>Klaar</Link>
