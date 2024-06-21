@@ -4,7 +4,6 @@ import Credentials from "@auth/core/providers/credentials";
 import { LoginSchema } from "@/schemas";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  // adapter: PrismaAdapter(prisma),
   providers: [
     Credentials({
       credentials: {
