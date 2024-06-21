@@ -5,6 +5,7 @@ import { LoginSchema } from "@/schemas";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
+    // @ts-ignore
     Credentials({
       credentials: {
         // This should become passId
