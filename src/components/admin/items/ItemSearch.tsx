@@ -1,5 +1,5 @@
-import TrashIcon from "@/components/TrashIcon";
 import ItemsTable from "@/components/items/ItemsTable";
+import Link from "next/link";
 
 interface LendItemsFormProps {
   search: string;
@@ -31,11 +31,25 @@ export default function ItemSearch({ search }: Readonly<LendItemsFormProps>) {
     <ItemsTable
       items={filteredItems}
       actionHeader={""}
-      actionCell={
-        <button className={"text-destructive hover:text-destructive/90 "}>
-          <TrashIcon />
-        </button>
-      }
+      actionCell={(item) => (
+        <div className={"flex gap-3"}>
+          <Link
+            href={"/admin/items/" + item.id}
+            className={
+              "text-xl text-primary-foreground hover:text-primary-foreground/60"
+            }
+          >
+            {/* Pencil character */}
+            &#9998;
+          </Link>
+          <button
+            className={"text-xl text-destructive hover:text-destructive/60"}
+          >
+            {/* Cross character */}
+            &#10006;
+          </button>
+        </div>
+      )}
     />
   );
 }

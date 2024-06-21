@@ -13,6 +13,7 @@ enum Role {
 
 export interface User {
   id: string;
+  passId: string;
   fullName: string;
   firstName: string;
   lastName: string;

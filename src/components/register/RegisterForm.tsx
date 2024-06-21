@@ -43,6 +43,7 @@ export default function RegisterForm() {
   async function onSubmit(data: z.infer<typeof RegisterSchema>) {
     const response = await createUser({
       ...data,
+      fullName: `${data.firstName} ${data.lastName}`,
       passId: passId,
     });
     console.log(response);
