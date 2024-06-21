@@ -9,13 +9,13 @@ export default function SearchStudents() {
   const [search, setSearch] = useState("");
 
   return (
-    <>
+    <div className={"flex flex-grow flex-col gap-8"}>
       <h1 className={"text-center text-5xl"}>Scan items</h1>
       <SearchBar search={search} onChange={setSearch} />
       <div className="flex-grow">
         <ZoekenTable search={search} />
       </div>
       <Button className={"mx-auto w-fit"}>Inleveren</Button>
-    </>
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 interface SearchBarProps {
   search: string;
@@ -7,9 +7,9 @@ interface SearchBarProps {
 
 const SearchBar = ({ search, onChange }: Readonly<SearchBarProps>) => {
   return (
-    <div>
+    <div className={"flex w-full gap-5"}>
       <input
-        className="bg-transparent   h-1/5 w-3/5 justify-self-center rounded-full p-2 px-2 shadow-md outline-none"
+        className="bg-transparent   h-1/5 w-3/5 flex-grow justify-self-center rounded-full p-2 px-2 shadow-md outline-none"
         placeholder="Search..."
         value={search}
         onChange={(e) => onChange(e.target.value)}
