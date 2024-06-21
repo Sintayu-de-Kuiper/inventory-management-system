@@ -4,8 +4,8 @@ import Credentials from "@auth/core/providers/credentials";
 import { LoginSchema } from "@/schemas";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  // adapter: PrismaAdapter(prisma),
   providers: [
+    // @ts-ignore
     Credentials({
       credentials: {
         // This should become passId
