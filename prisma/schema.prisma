@@ -8,16 +8,18 @@ datasource db {
 }
 
 model User {
-  id             Int    @id @default(autoincrement())
-  first_name     String
-  last_name      String
-  student_number BigInt    @unique
-  class_name     String
-  pass_id        String @unique
+  id            String @id @default(cuid())
+  firstName     String @map("first_name")
+  lastName      String @map("last_name")
+  studentNumber Int    @unique @map("student_number")
+  cohort        String
+  passId        String @unique @map("pass_id")
+  role          Int   @default(1) // Refer to the Role enum types.d.ts
 }
 
-model inventory {
-  id          Int    @id @default(autoincrement())
+model Inventory {
+  id          String @id @default(cuid())
   name        String
   description String
 }
+
