@@ -1,3 +1,5 @@
+"use client";
+
 import ReturnItemsForm from "@/components/return/ReturnItemsForm";
 import Button from "@/components/Button";
 import BackButton from "@/components/BackButton";
