@@ -1,6 +1,6 @@
 import BackButton from "@/components/BackButton";
 import Link from "next/link";
-import SearchStudents from "@/components/students/SearchStudents";
+import SearchStudents from "@/components/admin/students/SearchStudents";
 
 export default function main() {
   return (
@@ -12,7 +12,7 @@ export default function main() {
       <SearchStudents />
 
       <BackButton>
-        <Link href={"/home"}>Klaar</Link>
+        <Link href={"/admin"}>Klaar</Link>
       </BackButton>
     </main>
   );

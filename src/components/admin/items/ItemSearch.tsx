@@ -1,13 +1,11 @@
-import ItemsTable from "@/components/items/ItemsTable";
 import TrashIcon from "@/components/TrashIcon";
+import ItemsTable from "@/components/items/ItemsTable";
 
 interface LendItemsFormProps {
   search: string;
 }
 
-export default function LendItemsForm({
-  search,
-}: Readonly<LendItemsFormProps>) {
+export default function ItemSearch({ search }: Readonly<LendItemsFormProps>) {
   const items = [
     {
       id: "1",

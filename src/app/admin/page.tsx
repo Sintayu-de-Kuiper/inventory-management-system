@@ -1,5 +1,3 @@
-// src/app/admin/page.tsx
-
 import BackButton from "@/components/BackButton";
 import Button from "@/components/Button";
 import Link from "next/link";
@@ -13,14 +11,11 @@ export default function AdminHome() {
           <Link href={"/admin/items"}>items</Link>
         </Button>
         <Button>
-          <Link href={"/admin/dashboard"}>dashboard</Link>
-        </Button>
-        <Button>
           <Link href={"/admin/users"}>users</Link>
         </Button>
       </div>
       <BackButton>
-      <Link href={"/admin"}>go to admin page</Link>
+        <Link href={"/admin"}>Terug</Link>
       </BackButton>
     </main>
   );

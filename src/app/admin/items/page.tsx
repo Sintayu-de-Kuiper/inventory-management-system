@@ -1,18 +1,15 @@
 import Link from "next/link";
-import Button from "@/components/Button";
 import BackButton from "@/components/BackButton";
-import ItemsOverview from "@/components/admin/items/ItemsOverview";
+import SearchItems from "@/components/admin/items/SearchItems";
 
 export default function ItemOverview() {
   return (
     <main
       className={
-        "relative grid min-h-screen grid-rows-[2fr_7fr_auto] gap-10 px-10 py-12"
+        "relative flex min-h-screen flex-col items-center gap-10 px-10 py-12"
       }
     >
-      <h1 className={"text-center text-5xl"}>Items zoeken</h1>
-      <ItemsOverview />
-      <Button className={"mx-auto w-fit"}>Nieuw item</Button>
+      <SearchItems />
 
       <BackButton>
         <Link href={"/admin"}>Klaar</Link>
