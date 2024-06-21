@@ -1,13 +1,15 @@
 "use server";
-import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+import { signIn } from "@/auth";
 
 export async function login(studentNumber: number) {
   "use server";
-  return prisma.user.findFirst({
-    where: {
-      student_number: studentNumber,
-    },
-  });
+  try {
+    return await signIn("credentials", {
+      studentNumber,
+      redirect: false,
+    });
+  } catch (error) {
+    return null;
+  }
 }
