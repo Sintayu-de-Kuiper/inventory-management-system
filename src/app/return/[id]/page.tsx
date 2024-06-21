@@ -20,8 +20,8 @@ const ReturnPage = () => {
   return (
     <div className="bg-gray-100 flex min-h-screen items-center justify-center">
       <div className="bg-white flex w-full max-w-md flex-col rounded-lg p-8 text-center">
-        <h1 className="mb-6 text-2xl font-bold">Inleveren: Arduino</h1>
-        <div className="mb-4">
+        <h1 className="mb-28 text-2xl font-bold">Inleveren: Arduino</h1>
+        <div className="mb-8">
           <label htmlFor="amount" className="text-gray-700 mb-2 block">
             Aantal
           </label>
